@@ -15,7 +15,6 @@
             min-height: 100vh;
         }
 
-        /* HEADER BANNER */
         .form-header {
             max-width: 640px;
             margin: 30px auto 0;
@@ -27,7 +26,7 @@
         }
 
         .form-header img {
-            height: 70px;
+            height: 80px;
             margin-bottom: 12px;
             display: block;
         }
@@ -39,10 +38,7 @@
             margin-bottom: 6px;
         }
 
-        .form-header p {
-            color: #5f6368;
-            font-size: 0.9em;
-        }
+        .form-header p { color: #5f6368; font-size: 0.9em; }
 
         .form-header .date-badge {
             display: inline-block;
@@ -55,7 +51,6 @@
             font-weight: 500;
         }
 
-        /* REQUIRED NOTICE */
         .required-notice {
             max-width: 640px;
             margin: 0 auto;
@@ -67,11 +62,26 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
 
-        .required-notice span {
-            color: #d93025;
+        .required-notice span { color: #d93025; }
+
+        .section-divider {
+            max-width: 640px;
+            margin: 20px auto 0;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            border-top: 8px solid #9334ea;
+            padding: 18px 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
 
-        /* CARDS */
+        .section-divider h2 {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #202124;
+        }
+
+        .section-divider p { color: #5f6368; font-size: 0.85em; margin-top: 4px; }
+
         .card {
             max-width: 640px;
             margin: 12px auto;
@@ -80,30 +90,21 @@
             padding: 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
             border: 1px solid #e0e0e0;
-            transition: border-color 0.2s;
+            transition: border-left 0.2s;
         }
 
-        .card:focus-within {
-            border-left: 3px solid #1a73e8;
-        }
+        .card:focus-within { border-left: 3px solid #1a73e8; }
 
         .question-label {
             font-size: 0.95em;
             font-weight: 500;
             color: #202124;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            margin-bottom: 20px;
         }
 
-        .required-star {
-            color: #d93025;
-            font-size: 0.9em;
-        }
+        .required-star { color: #d93025; }
 
-        /* SELECT / INPUT */
-        select, input[type="text"] {
+        select {
             width: 100%;
             padding: 10px 0;
             background: transparent;
@@ -114,14 +115,10 @@
             outline: none;
             font-family: inherit;
             cursor: pointer;
-            transition: border-color 0.2s;
         }
 
-        select:focus, input[type="text"]:focus {
-            border-bottom: 2px solid #1a73e8;
-        }
+        select:focus { border-bottom: 2px solid #1a73e8; }
 
-        /* TEXTAREA */
         textarea {
             width: 100%;
             padding: 10px 0;
@@ -134,112 +131,107 @@
             outline: none;
             font-family: inherit;
             min-height: 50px;
-            transition: border-color 0.2s;
         }
 
-        textarea:focus {
-            border-bottom: 2px solid #1a73e8;
-        }
+        textarea:focus { border-bottom: 2px solid #1a73e8; }
 
-        /* SLIDER SECTION */
-        .slider-wrapper {
-            margin-top: 8px;
-        }
+        /* EMOJI SLIDER */
+        .emoji-slider-wrapper { margin-top: 8px; }
 
-        .slider-top {
+        .emoji-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .slider-desc {
-            font-size: 0.78em;
-            color: #5f6368;
-        }
-
-        .slider-current {
-            background: #1a73e8;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.95em;
-            flex-shrink: 0;
-        }
-
-        input[type="range"] {
-            width: 100%;
-            -webkit-appearance: none;
-            height: 4px;
-            background: #dadce0;
-            border-radius: 2px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #1a73e8;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            box-shadow: 0 0 0 8px rgba(26,115,232,0.15);
-        }
-
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 4px;
-            font-size: 0.72em;
-            color: #9aa0a6;
-        }
-
-        /* RADIO STYLE */
-        .radio-group {
+        .emoji-btn {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-        }
-
-        .radio-option {
-            display: flex;
             align-items: center;
-            padding: 10px 8px;
-            border-radius: 4px;
+            gap: 4px;
             cursor: pointer;
-            transition: background 0.15s;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            background: transparent;
+            transition: all 0.15s;
+            flex: 1;
+            max-width: 100px;
         }
 
-        .radio-option:hover {
-            background: #f1f3f4;
+        .emoji-btn:hover { background: #f1f3f4; }
+
+        .emoji-btn.selected {
+            background: #e8f0fe;
+            border-color: #1a73e8;
         }
 
-        .radio-option input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 12px;
-            accent-color: #1a73e8;
+        .emoji-btn .emoji-icon { font-size: 2em; line-height: 1; }
+
+        .emoji-btn .emoji-label {
+            font-size: 0.7em;
+            color: #5f6368;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .emoji-btn.selected .emoji-label { color: #1a73e8; font-weight: 600; }
+
+        /* CYCLE CARDS */
+        .cycle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .cycle-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 14px 12px;
             cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .cycle-option:hover { background: #f8f9fa; border-color: #9334ea; }
+
+        .cycle-option.selected {
+            background: #f3e8ff;
+            border-color: #9334ea;
+        }
+
+        .cycle-option input[type="radio"] {
+            accent-color: #9334ea;
+            margin-top: 2px;
             flex-shrink: 0;
         }
 
-        .radio-option span {
-            font-size: 0.9em;
+        .cycle-info .cycle-name {
+            font-size: 0.88em;
+            font-weight: 600;
             color: #202124;
         }
 
-        /* SUBMIT BUTTON */
+        .cycle-info .cycle-days {
+            font-size: 0.78em;
+            color: #9334ea;
+            font-weight: 500;
+            margin-top: 1px;
+        }
+
+        .cycle-info .cycle-desc {
+            font-size: 0.75em;
+            color: #5f6368;
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+
+        .cycle-icon { font-size: 1.5em; flex-shrink: 0; }
+
+        /* SUBMIT */
         .form-footer {
             max-width: 640px;
             margin: 12px auto 40px;
@@ -258,14 +250,10 @@
             font-weight: 500;
             cursor: pointer;
             font-family: inherit;
-            letter-spacing: 0.25px;
-            transition: background 0.2s, box-shadow 0.2s;
+            transition: background 0.2s;
         }
 
-        .btn-submit:hover {
-            background: #1557b0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
+        .btn-submit:hover { background: #1557b0; }
 
         .btn-clear {
             background: transparent;
@@ -288,28 +276,12 @@
             border-radius: 8px;
             padding: 40px 32px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-            border: 1px solid #e0e0e0;
             text-align: center;
         }
 
-        #successView .check-icon {
-            font-size: 3em;
-            margin-bottom: 16px;
-        }
-
-        #successView h2 {
-            color: #202124;
-            font-weight: 400;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-
-        #successView p {
-            color: #5f6368;
-            font-size: 0.9em;
-            margin-bottom: 24px;
-        }
-
+        #successView .check-icon { font-size: 3em; margin-bottom: 16px; }
+        #successView h2 { font-weight: 400; font-size: 1.4em; margin-bottom: 10px; }
+        #successView p { color: #5f6368; font-size: 0.9em; margin-bottom: 24px; }
         #successView button {
             background: #1a73e8;
             color: white;
@@ -321,7 +293,7 @@
             font-family: inherit;
         }
 
-        /* ADMIN */
+        /* ADMIN BTN */
         #adminBtn {
             position: fixed;
             bottom: 20px;
@@ -360,12 +332,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
-        .modal-box h3 {
-            color: #202124;
-            font-weight: 500;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-        }
+        .modal-box h3 { color: #202124; font-weight: 500; margin-bottom: 20px; }
 
         .modal-box input[type="password"] {
             width: 100%;
@@ -376,14 +343,9 @@
             outline: none;
             font-family: inherit;
             margin-bottom: 20px;
-            color: #202124;
         }
 
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
 
         .btn-cancel {
             background: transparent;
@@ -417,11 +379,7 @@
         }
 
         /* ADMIN PANEL */
-        #adminPanel {
-            display: none;
-            background: #f0f4f9;
-            min-height: 100vh;
-        }
+        #adminPanel { display: none; background: #f0f4f9; min-height: 100vh; }
 
         .admin-topbar {
             background: white;
@@ -434,7 +392,7 @@
         }
 
         .admin-topbar h1 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 500;
             color: #202124;
             display: flex;
@@ -442,9 +400,7 @@
             gap: 10px;
         }
 
-        .admin-topbar img {
-            height: 36px;
-        }
+        .admin-topbar img { height: 36px; }
 
         .btn-logout {
             background: transparent;
@@ -457,11 +413,7 @@
             font-family: inherit;
         }
 
-        .admin-content {
-            max-width: 1100px;
-            margin: 24px auto;
-            padding: 0 20px;
-        }
+        .admin-content { max-width: 1100px; margin: 24px auto; padding: 0 20px; }
 
         .filters-bar {
             background: white;
@@ -476,17 +428,8 @@
             border: 1px solid #e0e0e0;
         }
 
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-group label {
-            font-size: 0.85em;
-            color: #5f6368;
-        }
-
+        .filter-group { display: flex; align-items: center; gap: 8px; }
+        .filter-group label { font-size: 0.85em; color: #5f6368; }
         .filter-group select {
             border: 1px solid #dadce0;
             border-radius: 4px;
@@ -495,11 +438,6 @@
             color: #202124;
             width: auto;
             border-bottom: 1px solid #dadce0;
-        }
-
-        .filter-group select:focus {
-            border: 2px solid #1a73e8;
-            border-radius: 4px;
         }
 
         .stats-grid {
@@ -518,17 +456,8 @@
             text-align: center;
         }
 
-        .stat-card .stat-val {
-            font-size: 2em;
-            font-weight: 600;
-            color: #1a73e8;
-        }
-
-        .stat-card .stat-label {
-            font-size: 0.78em;
-            color: #5f6368;
-            margin-top: 4px;
-        }
+        .stat-card .stat-val { font-size: 2em; font-weight: 600; color: #1a73e8; }
+        .stat-card .stat-label { font-size: 0.78em; color: #5f6368; margin-top: 4px; }
 
         .charts-grid {
             display: grid;
@@ -545,12 +474,7 @@
             border: 1px solid #e0e0e0;
         }
 
-        .chart-card h3 {
-            font-size: 0.9em;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 16px;
-        }
+        .chart-card h3 { font-size: 0.9em; font-weight: 500; color: #202124; margin-bottom: 16px; }
 
         .data-table-card {
             background: white;
@@ -561,18 +485,9 @@
             overflow-x: auto;
         }
 
-        .data-table-card h3 {
-            font-size: 0.9em;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 16px;
-        }
+        .data-table-card h3 { font-size: 0.9em; font-weight: 500; color: #202124; margin-bottom: 16px; }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85em;
-        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
 
         th {
             text-align: left;
@@ -595,7 +510,9 @@
         tr:hover td { background: #f8f9fa; }
 
         .chip {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
             padding: 2px 8px;
             border-radius: 12px;
             font-size: 0.78em;
@@ -621,6 +538,8 @@
         @media (max-width: 700px) {
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .charts-grid { grid-template-columns: 1fr; }
+            .cycle-grid { grid-template-columns: 1fr; }
+            .emoji-btn .emoji-label { display: none; }
         }
     </style>
 </head>
@@ -630,7 +549,8 @@
 <div class="modal" id="loginModal">
     <div class="modal-box">
         <h3>🔐 Accès administrateur</h3>
-        <input type="password" id="pwdInput" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkLogin()">
+        <input type="password" id="pwdInput" placeholder="Mot de passe"
+               onkeydown="if(event.key==='Enter')checkLogin()">
         <p class="error-msg" id="errorMsg">Mot de passe incorrect</p>
         <div class="modal-actions">
             <button class="btn-cancel" onclick="closeModal()">Annuler</button>
@@ -639,7 +559,7 @@
     </div>
 </div>
 
-<!-- FORMULAIRE -->
+<!-- ===================== FORMULAIRE ===================== -->
 <div id="formView">
 
     <div class="form-header">
@@ -650,11 +570,9 @@
         <span class="date-badge" id="todayDate"></span>
     </div>
 
-    <div class="required-notice">
-        <span>*</span> Indique une question obligatoire
-    </div>
+    <div class="required-notice"><span>*</span> Indique une question obligatoire</div>
 
-    <!-- IDENTIFICATION -->
+    <!-- NOM -->
     <div class="card">
         <div class="question-label">Ton prénom <span class="required-star">*</span></div>
         <select id="playerName">
@@ -673,152 +591,162 @@
         </select>
     </div>
 
+    <!-- ===== PARTIE 1 : WELLNESS ===== -->
+    <div class="section-divider" style="border-top-color:#1a73e8;">
+        <h2>💪 Partie 1 — Bien-être physique & mental</h2>
+        <p>Évalue chaque paramètre de 1 (très mauvais) à 5 (excellent)</p>
+    </div>
+
     <!-- FATIGUE -->
     <div class="card">
         <div class="question-label">Niveau de fatigue <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Épuisée &nbsp;·&nbsp; 10 = Très fraîche</span>
-                <div class="slider-current" id="fatigueVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="fatigue"
-                   oninput="updateVal('fatigue','fatigueVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-fatigue"></div>
         </div>
+        <input type="hidden" id="fatigue" value="">
     </div>
 
     <!-- SOMMEIL -->
     <div class="card">
         <div class="question-label">Qualité du sommeil <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très mauvais &nbsp;·&nbsp; 10 = Excellent</span>
-                <div class="slider-current" id="sleepVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="sleep"
-                   oninput="updateVal('sleep','sleepVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-sleep"></div>
         </div>
+        <input type="hidden" id="sleep" value="">
     </div>
 
     <!-- HUMEUR -->
     <div class="card">
         <div class="question-label">Humeur générale <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très basse &nbsp;·&nbsp; 10 = Excellente</span>
-                <div class="slider-current" id="moodVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="mood"
-                   oninput="updateVal('mood','moodVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-mood"></div>
         </div>
+        <input type="hidden" id="mood" value="">
     </div>
 
     <!-- STRESS -->
     <div class="card">
-        <div class="question-label">Stress / Charge mentale <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très stressée &nbsp;·&nbsp; 10 = Très sereine</span>
-                <div class="slider-current" id="stressVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="stress"
-                   oninput="updateVal('stress','stressVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="question-label">Stress / Charge mentale <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très stressée · 5 = très sereine</small>
         </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-stress"></div>
+        </div>
+        <input type="hidden" id="stress" value="">
     </div>
 
     <!-- COURBATURES HAUT -->
     <div class="card">
-        <div class="question-label">Courbatures — haut du corps <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très douloureuse &nbsp;·&nbsp; 10 = Aucune douleur</span>
-                <div class="slider-current" id="sorenessUpVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="sorenessUp"
-                   oninput="updateVal('sorenessUp','sorenessUpVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="question-label">Courbatures — haut du corps <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très douloureux · 5 = aucune douleur</small>
         </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-sorenessUp"></div>
+        </div>
+        <input type="hidden" id="sorenessUp" value="">
     </div>
 
     <!-- COURBATURES BAS -->
     <div class="card">
-        <div class="question-label">Courbatures — bas du corps <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très douloureuse &nbsp;·&nbsp; 10 = Aucune douleur</span>
-                <div class="slider-current" id="sorenessDownVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="sorenessDown"
-                   oninput="updateVal('sorenessDown','sorenessDownVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="question-label">Courbatures — bas du corps <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très douloureux · 5 = aucune douleur</small>
         </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-sorenessDown"></div>
+        </div>
+        <input type="hidden" id="sorenessDown" value="">
     </div>
 
     <!-- MOTIVATION -->
     <div class="card">
         <div class="question-label">Motivation à l'entraînement <span class="required-star">*</span></div>
-        <div class="slider-wrapper">
-            <div class="slider-top">
-                <span class="slider-desc">1 = Très faible &nbsp;·&nbsp; 10 = Très motivée</span>
-                <div class="slider-current" id="motivationVal">5</div>
-            </div>
-            <input type="range" min="1" max="10" value="5" id="motivation"
-                   oninput="updateVal('motivation','motivationVal')">
-            <div class="slider-labels">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-motivation"></div>
         </div>
+        <input type="hidden" id="motivation" value="">
     </div>
 
-    <!-- BLESSURE -->
+    <!-- DOULEURS / GÊNES (TEXTE LIBRE) -->
     <div class="card">
-        <div class="question-label">Blessure ou douleur particulière ? <span class="required-star">*</span></div>
-        <div class="radio-group">
-            <label class="radio-option">
-                <input type="radio" name="injury" value="non" checked>
-                <span>Non, tout va bien</span>
-            </label>
-            <label class="radio-option">
-                <input type="radio" name="injury" value="leger">
-                <span>Légère gêne</span>
-            </label>
-            <label class="radio-option">
-                <input type="radio" name="injury" value="moyen">
-                <span>Douleur modérée</span>
-            </label>
-            <label class="radio-option">
-                <input type="radio" name="injury" value="severe">
-                <span>Douleur sévère</span>
-            </label>
-        </div>
+        <div class="question-label">Douleurs ou gênes particulières ?</div>
+        <textarea id="injury" placeholder="Décris ici toute douleur, gêne ou blessure..."></textarea>
     </div>
 
     <!-- COMMENTAIRE -->
     <div class="card">
-        <div class="question-label">Commentaire libre</div>
-        <textarea id="comment" placeholder="Précise si besoin..."></textarea>
+        <div class="question-label">Autre chose à signaler ?</div>
+        <textarea id="comment" placeholder="Commentaire libre..."></textarea>
+    </div>
+
+    <!-- ===== PARTIE 2 : CYCLE MENSTRUEL ===== -->
+    <div class="section-divider" style="border-top-color:#9334ea;">
+        <h2>🌸 Partie 2 — Cycle menstruel</h2>
+        <p>Ces informations sont confidentielles et servent à adapter ton suivi</p>
+    </div>
+
+    <!-- PHASE DU CYCLE -->
+    <div class="card">
+        <div class="question-label">Dans quelle phase de ton cycle es-tu ? <span class="required-star">*</span></div>
+        <div class="cycle-grid" id="cycleGrid">
+
+            <label class="cycle-option" onclick="selectCycle(this,'menstrual')">
+                <input type="radio" name="cycle" value="menstrual">
+                <span class="cycle-icon">🩸</span>
+                <div class="cycle-info">
+                    <div class="cycle-name">Phase menstruelle</div>
+                    <div class="cycle-days">Jours 0 – 5</div>
+                    <div class="cycle-desc">Règles · Repos privilégié</div>
+                </div>
+            </label>
+
+            <label class="cycle-option" onclick="selectCycle(this,'follicular')">
+                <input type="radio" name="cycle" value="follicular">
+                <span class="cycle-icon">🌱</span>
+                <div class="cycle-info">
+                    <div class="cycle-name">Phase folliculaire</div>
+                    <div class="cycle-days">Jours 6 – 13</div>
+                    <div class="cycle-desc">Énergie montante · Bonne récupération</div>
+                </div>
+            </label>
+
+            <label class="cycle-option" onclick="selectCycle(this,'ovulatory')">
+                <input type="radio" name="cycle" value="ovulatory">
+                <span class="cycle-icon">⭐️</span>
+                <div class="cycle-info">
+                    <div class="cycle-name">Phase ovulatoire</div>
+                    <div class="cycle-days">Jours 14 – 16</div>
+                    <div class="cycle-desc">Pic d'énergie · Performance maximale</div>
+                </div>
+            </label>
+
+            <label class="cycle-option" onclick="selectCycle(this,'luteal')">
+                <input type="radio" name="cycle" value="luteal">
+                <span class="cycle-icon">🌙</span>
+                <div class="cycle-info">
+                    <div class="cycle-name">Phase lutéale</div>
+                    <div class="cycle-days">À partir du jour 16</div>
+                    <div class="cycle-desc">Fatigue possible · SPM en fin de phase</div>
+                </div>
+            </label>
+
+        </div>
+    </div>
+
+    <!-- SYMPTÔMES CYCLE -->
+    <div class="card">
+        <div class="question-label">Symptômes liés au cycle <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très impactée · 5 = aucun impact</small>
+        </div>
+        <div class="emoji-slider-wrapper">
+            <div class="emoji-row" id="row-cycleSymptoms"></div>
+        </div>
+        <input type="hidden" id="cycleSymptoms" value="">
+    </div>
+
+    <!-- COMMENTAIRE CYCLE -->
+    <div class="card">
+        <div class="question-label">Commentaire sur ton cycle</div>
+        <textarea id="cycleComment" placeholder="Douleurs, SPM, autre information..."></textarea>
     </div>
 
     <div class="form-footer">
@@ -828,15 +756,15 @@
 
 </div>
 
-<!-- SUCCESS VIEW -->
+<!-- SUCCESS -->
 <div id="successView">
     <div class="check-icon">✅</div>
-    <h2>Réponse enregistrée</h2>
-    <p>Merci ! Ton bilan a bien été envoyé.</p>
+    <h2>Réponse enregistrée !</h2>
+    <p>Merci ! Ton bilan wellness a bien été envoyé.</p>
     <button onclick="newResponse()">Envoyer une autre réponse</button>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ===================== ADMIN PANEL ===================== -->
 <div id="adminPanel">
     <div class="admin-topbar">
         <h1>
@@ -867,7 +795,6 @@
             </div>
         </div>
 
-        <!-- STATS -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-val" id="statTotal">0</div>
@@ -887,7 +814,6 @@
             </div>
         </div>
 
-        <!-- CHARTS -->
         <div class="charts-grid">
             <div class="chart-card">
                 <h3>Fatigue & Sommeil</h3>
@@ -907,7 +833,6 @@
             </div>
         </div>
 
-        <!-- TABLE -->
         <div class="data-table-card">
             <h3>Réponses détaillées</h3>
             <table>
@@ -919,10 +844,12 @@
                         <th>Sommeil</th>
                         <th>Humeur</th>
                         <th>Stress</th>
-                        <th>Cors. H</th>
-                        <th>Cors. B</th>
+                        <th>Cors.H</th>
+                        <th>Cors.B</th>
                         <th>Motiv.</th>
-                        <th>Blessure</th>
+                        <th>Phase cycle</th>
+                        <th>Symptômes</th>
+                        <th>Douleurs</th>
                         <th>Commentaire</th>
                         <th></th>
                     </tr>
@@ -939,43 +866,108 @@
 <script>
     let charts = {};
 
-    // Date du jour
+    // Date
     document.getElementById('todayDate').textContent =
         new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
-    function updateVal(id, valId) {
-        document.getElementById(valId).textContent = document.getElementById(id).value;
+    // ===== EMOJI BUTTONS =====
+    const emojiSets = {
+        default: [
+            { icon: '😩', label: 'Très mauvais' },
+            { icon: '😟', label: 'Mauvais' },
+            { icon: '😐', label: 'Moyen' },
+            { icon: '🙂', label: 'Bien' },
+            { icon: '😄', label: 'Excellent' }
+        ]
+    };
+
+    function buildEmojiRow(rowId, fieldId) {
+        const row = document.getElementById(rowId);
+        emojiSets.default.forEach((e, i) => {
+            const val = i + 1;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'emoji-btn';
+            btn.innerHTML = `<span class="emoji-icon">${e.icon}</span><span class="emoji-label">${val} — ${e.label}</span>`;
+            btn.onclick = () => {
+                row.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                document.getElementById(fieldId).value = val;
+            };
+            row.appendChild(btn);
+        });
     }
 
+    ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
+        buildEmojiRow('row-'+id, id);
+    });
+
+    // ===== CYCLE SELECTION =====
+    function selectCycle(label, val) {
+        document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
+        label.classList.add('selected');
+    }
+
+    // ===== CLEAR =====
     function clearForm() {
         if (!confirm('Effacer toutes les réponses ?')) return;
         document.getElementById('playerName').value = '';
-        ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'].forEach(id => {
-            document.getElementById(id).value = 5;
-            document.getElementById(id+'Val').textContent = '5';
+        ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
+            document.getElementById(id).value = '';
+            document.querySelectorAll(`#row-${id} .emoji-btn`).forEach(b => b.classList.remove('selected'));
         });
-        document.querySelector('input[name="injury"][value="non"]').checked = true;
+        document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
+        document.querySelectorAll('input[name="cycle"]').forEach(r => r.checked = false);
+        document.getElementById('injury').value = '';
         document.getElementById('comment').value = '';
+        document.getElementById('cycleComment').value = '';
     }
 
+    // ===== SUBMIT =====
     function submitForm() {
         const player = document.getElementById('playerName').value;
         if (!player) { alert('Veuillez sélectionner votre nom.'); return; }
+
+        const required = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
+        for (let id of required) {
+            if (!document.getElementById(id).value) {
+                alert('Merci de répondre à toutes les questions obligatoires (★).');
+                return;
+            }
+        }
+
+        const cycleVal = document.querySelector('input[name="cycle"]:checked');
+        if (!cycleVal) { alert('Veuillez sélectionner votre phase de cycle.'); return; }
+
+        if (!document.getElementById('cycleSymptoms').value) {
+            alert('Merci de renseigner les symptômes liés au cycle.');
+            return;
+        }
+
+        const cycleLabels = {
+            menstrual: '🩸 Menstruelle (J0–5)',
+            follicular: '🌱 Folliculaire (J6–13)',
+            ovulatory: '⭐️ Ovulatoire (J14–16)',
+            luteal: '🌙 Lutéale (J16+)'
+        };
 
         const entry = {
             id: Date.now(),
             date: new Date().toLocaleDateString('fr-FR'),
             timestamp: Date.now(),
             player,
-            fatigue: +document.getElementById('fatigue').value,
-            sleep: +document.getElementById('sleep').value,
-            mood: +document.getElementById('mood').value,
-            stress: +document.getElementById('stress').value,
-            sorenessUp: +document.getElementById('sorenessUp').value,
+            fatigue:      +document.getElementById('fatigue').value,
+            sleep:        +document.getElementById('sleep').value,
+            mood:         +document.getElementById('mood').value,
+            stress:       +document.getElementById('stress').value,
+            sorenessUp:   +document.getElementById('sorenessUp').value,
             sorenessDown: +document.getElementById('sorenessDown').value,
-            motivation: +document.getElementById('motivation').value,
-            injury: document.querySelector('input[name="injury"]:checked').value,
-            comment: document.getElementById('comment').value
+            motivation:   +document.getElementById('motivation').value,
+            injury:       document.getElementById('injury').value || '—',
+            comment:      document.getElementById('comment').value || '—',
+            cyclePhase:   cycleLabels[cycleVal.value],
+            cycleSymptoms: +document.getElementById('cycleSymptoms').value,
+            cycleComment: document.getElementById('cycleComment').value || '—'
         };
 
         let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
@@ -994,14 +986,9 @@
         document.getElementById('adminBtn').style.display = 'block';
     }
 
-    // ADMIN
-    function openAdmin() {
-        document.getElementById('loginModal').classList.add('active');
-    }
-
-    function closeModal() {
-        document.getElementById('loginModal').classList.remove('active');
-    }
+    // ===== ADMIN =====
+    function openAdmin() { document.getElementById('loginModal').classList.add('active'); }
+    function closeModal() { document.getElementById('loginModal').classList.remove('active'); }
 
     function checkLogin() {
         if (document.getElementById('pwdInput').value === 'MHRESPOIRS') {
@@ -1012,154 +999,4 @@
             document.getElementById('adminBtn').style.display = 'none';
             loadAdminData();
         } else {
-            document.getElementById('errorMsg').style.display = 'block';
-        }
-    }
-
-    function logout() {
-        document.getElementById('adminPanel').style.display = 'none';
-        document.getElementById('formView').style.display = 'block';
-        document.getElementById('adminBtn').style.display = 'block';
-        document.getElementById('pwdInput').value = '';
-        document.getElementById('errorMsg').style.display = 'none';
-    }
-
-    function getFilteredData() {
-        const days = +document.getElementById('filterDays').value;
-        const player = document.getElementById('filterPlayer').value;
-        const cutoff = Date.now() - days * 86400000;
-        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
-        return data.filter(d => d.timestamp >= cutoff && (player === 'all' || d.player === player));
-    }
-
-    function loadAdminData() {
-        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
-        const players = [...new Set(data.map(d => d.player))];
-        const sel = document.getElementById('filterPlayer');
-        sel.innerHTML = '<option value="all">Toutes</option>';
-        players.forEach(p => sel.innerHTML += `<option>${p}</option>`);
-        updateDashboard();
-    }
-
-    function updateDashboard() {
-        const data = getFilteredData();
-        renderStats(data);
-        renderTable(data);
-        renderCharts(data);
-    }
-
-    function avg(arr, key) {
-        return arr.length ? (arr.reduce((s,d) => s+d[key],0)/arr.length).toFixed(1) : '-';
-    }
-
-    function renderStats(data) {
-        document.getElementById('statTotal').textContent = data.length;
-        document.getElementById('statFatigue').textContent = avg(data,'fatigue');
-        document.getElementById('statSleep').textContent = avg(data,'sleep');
-        document.getElementById('statMood').textContent = avg(data,'mood');
-    }
-
-    function chipColor(val) {
-        if (val >= 7) return 'chip-green';
-        if (val >= 4) return 'chip-yellow';
-        return 'chip-red';
-    }
-
-    function deleteEntry(id) {
-        if (!confirm('Supprimer cette réponse ?')) return;
-        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
-        data = data.filter(d => d.id !== id);
-        localStorage.setItem('wellnessData', JSON.stringify(data));
-        loadAdminData();
-    }
-
-    function renderTable(data) {
-        const tbody = document.getElementById('dataTableBody');
-        if (!data.length) {
-            tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;color:#9aa0a6;padding:30px;">Aucune donnée</td></tr>';
-            return;
-        }
-        tbody.innerHTML = [...data].reverse().slice(0,50).map(d => `
-            <tr>
-                <td>${d.date}</td>
-                <td><strong>${d.player}</strong></td>
-                <td><span class="chip ${chipColor(d.fatigue)}">${d.fatigue}</span></td>
-                <td><span class="chip ${chipColor(d.sleep)}">${d.sleep}</span></td>
-                <td><span class="chip ${chipColor(d.mood)}">${d.mood}</span></td>
-                <td><span class="chip ${chipColor(d.stress)}">${d.stress}</span></td>
-                <td><span class="chip ${chipColor(d.sorenessUp)}">${d.sorenessUp}</span></td>
-                <td><span class="chip ${chipColor(d.sorenessDown)}">${d.sorenessDown}</span></td>
-                <td><span class="chip ${chipColor(d.motivation)}">${d.motivation}</span></td>
-                <td style="font-size:0.82em;color:${d.injury==='non'?'#137333':d.injury==='leger'?'#a16207':'#c5221f'}">${d.injury}</td>
-                <td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368">${d.comment||'—'}</td>
-                <td><button class="btn-delete" onclick="deleteEntry(${d.id})">🗑</button></td>
-            </tr>
-        `).join('');
-    }
-
-    function renderCharts(data) {
-        const byDate = {};
-        data.forEach(d => {
-            if (!byDate[d.date]) byDate[d.date] = [];
-            byDate[d.date].push(d);
-        });
-        const dates = Object.keys(byDate).sort((a,b) => {
-            const p = s => { const [d,m,y]=s.split('/'); return new Date(y,m-1,d); };
-            return p(a)-p(b);
-        });
-
-        const a = (arr,k) => arr.length ? (arr.reduce((s,d)=>s+d[k],0)/arr.length).toFixed(1) : null;
-
-        const opts = {
-            responsive: true,
-            plugins: { legend: { labels: { color: '#5f6368', font: { size: 11 } } } },
-            scales: {
-                x: { ticks: { color: '#9aa0a6', font:{size:10} }, grid: { color: '#f1f3f4' } },
-                y: { min:0, max:10, ticks: { color: '#9aa0a6' }, grid: { color: '#f1f3f4' } }
-            }
-        };
-
-        function mk(id, datasets, type='line') {
-            if (charts[id]) charts[id].destroy();
-            charts[id] = new Chart(document.getElementById(id), {
-                type,
-                data: { labels: dates, datasets },
-                options: { ...opts, plugins: { ...opts.plugins, legend: { labels: { color:'#5f6368', font:{size:11} } } } }
-            });
-        }
-
-        mk('chartFatigue', [
-            { label:'Fatigue', data: dates.map(d=>a(byDate[d],'fatigue')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true },
-            { label:'Sommeil', data: dates.map(d=>a(byDate[d],'sleep')), borderColor:'#34a853', backgroundColor:'rgba(52,168,83,0.08)', tension:0.4, fill:true }
-        ]);
-        mk('chartMood', [
-            { label:'Humeur', data: dates.map(d=>a(byDate[d],'mood')), borderColor:'#fbbc04', backgroundColor:'rgba(251,188,4,0.08)', tension:0.4, fill:true },
-            { label:'Stress', data: dates.map(d=>a(byDate[d],'stress')), borderColor:'#ea4335', backgroundColor:'rgba(234,67,53,0.08)', tension:0.4, fill:true }
-        ]);
-        mk('chartSoreness', [
-            { label:'Haut', data: dates.map(d=>a(byDate[d],'sorenessUp')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true },
-            { label:'Bas', data: dates.map(d=>a(byDate[d],'sorenessDown')), borderColor:'#9334ea', backgroundColor:'rgba(147,52,234,0.08)', tension:0.4, fill:true }
-        ]);
-
-        const byPlayer = {};
-        data.forEach(d => { if(!byPlayer[d.player]) byPlayer[d.player]=[]; byPlayer[d.player].push(d); });
-        const players = Object.keys(byPlayer);
-        const scores = players.map(p => {
-            const e = byPlayer[p];
-            const keys = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
-            return (e.reduce((s,d)=>s+keys.reduce((ss,k)=>ss+d[k],0),0)/(e.length*keys.length)).toFixed(1);
-        });
-
-        if (charts['chartPlayers']) charts['chartPlayers'].destroy();
-        charts['chartPlayers'] = new Chart(document.getElementById('chartPlayers'), {
-            type: 'bar',
-            data: {
-                labels: players,
-                datasets: [{ label:'Score', data: scores, backgroundColor:'rgba(26,115,232,0.7)', borderColor:'#1a73e8', borderWidth:1, borderRadius:4 }]
-            },
-            options: { ...opts, plugins: { legend: { display:false } } }
-        });
-    }
-</script>
-</body>
-</html>
+            document.getElementById('error
