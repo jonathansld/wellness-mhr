@@ -69,10 +69,12 @@
             margin: 20px auto 0;
             background: white;
             border-radius: 8px 8px 0 0;
-            border-top: 8px solid #9334ea;
+            border-top: 8px solid #1a73e8;
             padding: 18px 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
+
+        .section-divider.purple { border-top-color: #9334ea; }
 
         .section-divider h2 {
             font-size: 1.2em;
@@ -90,16 +92,13 @@
             padding: 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
             border: 1px solid #e0e0e0;
-            transition: border-left 0.2s;
         }
-
-        .card:focus-within { border-left: 3px solid #1a73e8; }
 
         .question-label {
             font-size: 0.95em;
             font-weight: 500;
             color: #202124;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .required-star { color: #d93025; }
@@ -130,52 +129,95 @@
             resize: none;
             outline: none;
             font-family: inherit;
-            min-height: 50px;
+            min-height: 60px;
         }
 
         textarea:focus { border-bottom: 2px solid #1a73e8; }
 
-        /* EMOJI SLIDER */
-        .emoji-slider-wrapper { margin-top: 8px; }
+        /* ===== SLIDER EMOJI ===== */
+        .slider-block { width: 100%; }
 
-        .emoji-row {
+        .slider-emoji-display {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .slider-emoji-display .big-emoji {
+            font-size: 2.8em;
+            display: block;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+
+        .slider-emoji-display .emoji-text {
+            font-size: 0.85em;
+            color: #5f6368;
+            margin-top: 4px;
+            font-weight: 500;
+            min-height: 20px;
+        }
+
+        .slider-track-wrap {
+            position: relative;
+            padding: 0 4px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #dadce0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1a73e8;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            transition: background 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1a73e8;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .slider-labels-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-top: 8px;
         }
 
-        .emoji-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            padding: 8px 10px;
-            border-radius: 8px;
-            border: 2px solid transparent;
-            background: transparent;
-            transition: all 0.15s;
-            flex: 1;
-            max-width: 100px;
-        }
-
-        .emoji-btn:hover { background: #f1f3f4; }
-
-        .emoji-btn.selected {
-            background: #e8f0fe;
-            border-color: #1a73e8;
-        }
-
-        .emoji-btn .emoji-icon { font-size: 2em; line-height: 1; }
-
-        .emoji-btn .emoji-label {
-            font-size: 0.7em;
-            color: #5f6368;
+        .slider-labels-row span {
+            font-size: 0.75em;
+            color: #9aa0a6;
+            width: 20%;
             text-align: center;
-            line-height: 1.2;
         }
 
-        .emoji-btn.selected .emoji-label { color: #1a73e8; font-weight: 600; }
+        .slider-dots-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-top: 4px;
+        }
+
+        .slider-dots-row span {
+            font-size: 1.2em;
+        }
 
         /* CYCLE CARDS */
         .cycle-grid {
@@ -197,11 +239,7 @@
         }
 
         .cycle-option:hover { background: #f8f9fa; border-color: #9334ea; }
-
-        .cycle-option.selected {
-            background: #f3e8ff;
-            border-color: #9334ea;
-        }
+        .cycle-option.selected { background: #f3e8ff; border-color: #9334ea; }
 
         .cycle-option input[type="radio"] {
             accent-color: #9334ea;
@@ -209,25 +247,8 @@
             flex-shrink: 0;
         }
 
-        .cycle-info .cycle-name {
-            font-size: 0.88em;
-            font-weight: 600;
-            color: #202124;
-        }
-
-        .cycle-info .cycle-days {
-            font-size: 0.78em;
-            color: #9334ea;
-            font-weight: 500;
-            margin-top: 1px;
-        }
-
-        .cycle-info .cycle-desc {
-            font-size: 0.75em;
-            color: #5f6368;
-            margin-top: 3px;
-            line-height: 1.3;
-        }
+        .cycle-info .cycle-name { font-size: 0.88em; font-weight: 600; color: #202124; }
+        .cycle-info .cycle-days { font-size: 0.78em; color: #9334ea; font-weight: 500; margin-top: 1px; }
 
         .cycle-icon { font-size: 1.5em; flex-shrink: 0; }
 
@@ -308,8 +329,6 @@
             font-family: inherit;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-
-        #adminBtn:hover { background: #f1f3f4; }
 
         /* MODAL */
         .modal {
@@ -539,7 +558,6 @@
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .charts-grid { grid-template-columns: 1fr; }
             .cycle-grid { grid-template-columns: 1fr; }
-            .emoji-btn .emoji-label { display: none; }
         }
     </style>
 </head>
@@ -591,8 +609,8 @@
         </select>
     </div>
 
-    <!-- ===== PARTIE 1 : WELLNESS ===== -->
-    <div class="section-divider" style="border-top-color:#1a73e8;">
+    <!-- ===== PARTIE 1 ===== -->
+    <div class="section-divider">
         <h2>💪 Partie 1 — Bien-être physique & mental</h2>
         <p>Évalue chaque paramètre de 1 (très mauvais) à 5 (excellent)</p>
     </div>
@@ -600,94 +618,83 @@
     <!-- FATIGUE -->
     <div class="card">
         <div class="question-label">Niveau de fatigue <span class="required-star">*</span></div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-fatigue"></div>
-        </div>
-        <input type="hidden" id="fatigue" value="">
+        <div class="slider-block" id="block-fatigue"></div>
+        <input type="hidden" id="fatigue" value="3">
     </div>
 
     <!-- SOMMEIL -->
     <div class="card">
         <div class="question-label">Qualité du sommeil <span class="required-star">*</span></div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-sleep"></div>
-        </div>
-        <input type="hidden" id="sleep" value="">
+        <div class="slider-block" id="block-sleep"></div>
+        <input type="hidden" id="sleep" value="3">
     </div>
 
     <!-- HUMEUR -->
     <div class="card">
         <div class="question-label">Humeur générale <span class="required-star">*</span></div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-mood"></div>
-        </div>
-        <input type="hidden" id="mood" value="">
+        <div class="slider-block" id="block-mood"></div>
+        <input type="hidden" id="mood" value="3">
     </div>
 
     <!-- STRESS -->
     <div class="card">
-        <div class="question-label">Stress / Charge mentale <span class="required-star">*</span><br>
-            <small style="font-weight:400;color:#5f6368;">1 = très stressée · 5 = très sereine</small>
+        <div class="question-label">
+            Stress / Charge mentale <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très stressée &nbsp;·&nbsp; 5 = très sereine</small>
         </div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-stress"></div>
-        </div>
-        <input type="hidden" id="stress" value="">
+        <div class="slider-block" id="block-stress"></div>
+        <input type="hidden" id="stress" value="3">
     </div>
 
     <!-- COURBATURES HAUT -->
     <div class="card">
-        <div class="question-label">Courbatures — haut du corps <span class="required-star">*</span><br>
-            <small style="font-weight:400;color:#5f6368;">1 = très douloureux · 5 = aucune douleur</small>
+        <div class="question-label">
+            Courbatures — haut du corps <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très douloureux &nbsp;·&nbsp; 5 = aucune douleur</small>
         </div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-sorenessUp"></div>
-        </div>
-        <input type="hidden" id="sorenessUp" value="">
+        <div class="slider-block" id="block-sorenessUp"></div>
+        <input type="hidden" id="sorenessUp" value="3">
     </div>
 
     <!-- COURBATURES BAS -->
     <div class="card">
-        <div class="question-label">Courbatures — bas du corps <span class="required-star">*</span><br>
-            <small style="font-weight:400;color:#5f6368;">1 = très douloureux · 5 = aucune douleur</small>
+        <div class="question-label">
+            Courbatures — bas du corps <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très douloureux &nbsp;·&nbsp; 5 = aucune douleur</small>
         </div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-sorenessDown"></div>
-        </div>
-        <input type="hidden" id="sorenessDown" value="">
+        <div class="slider-block" id="block-sorenessDown"></div>
+        <input type="hidden" id="sorenessDown" value="3">
     </div>
 
     <!-- MOTIVATION -->
     <div class="card">
         <div class="question-label">Motivation à l'entraînement <span class="required-star">*</span></div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-motivation"></div>
-        </div>
-        <input type="hidden" id="motivation" value="">
+        <div class="slider-block" id="block-motivation"></div>
+        <input type="hidden" id="motivation" value="3">
     </div>
 
-    <!-- DOULEURS / GÊNES (TEXTE LIBRE) -->
+    <!-- DOULEURS LIBRES -->
     <div class="card">
-        <div class="question-label">Douleurs ou gênes particulières ?</div>
-        <textarea id="injury" placeholder="Décris ici toute douleur, gêne ou blessure..."></textarea>
+        <div class="question-label">Douleurs ou gênes à signaler</div>
+        <textarea id="injury" placeholder="Ex : douleur genou droit, tension nuque..."></textarea>
     </div>
 
     <!-- COMMENTAIRE -->
     <div class="card">
         <div class="question-label">Autre chose à signaler ?</div>
-        <textarea id="comment" placeholder="Commentaire libre..."></textarea>
+        <textarea id="comment" placeholder="Toute information utile pour le staff..."></textarea>
     </div>
 
-    <!-- ===== PARTIE 2 : CYCLE MENSTRUEL ===== -->
-    <div class="section-divider" style="border-top-color:#9334ea;">
+    <!-- ===== PARTIE 2 CYCLE ===== -->
+    <div class="section-divider purple">
         <h2>🌸 Partie 2 — Cycle menstruel</h2>
-        <p>Ces informations sont confidentielles et servent à adapter ton suivi</p>
+        <p>Ces informations nous aident à adapter ta charge d'entraînement</p>
     </div>
 
-    <!-- PHASE DU CYCLE -->
+    <!-- PHASE -->
     <div class="card">
         <div class="question-label">Dans quelle phase de ton cycle es-tu ? <span class="required-star">*</span></div>
-        <div class="cycle-grid" id="cycleGrid">
+        <div class="cycle-grid">
 
             <label class="cycle-option" onclick="selectCycle(this,'menstrual')">
                 <input type="radio" name="cycle" value="menstrual">
@@ -695,7 +702,6 @@
                 <div class="cycle-info">
                     <div class="cycle-name">Phase menstruelle</div>
                     <div class="cycle-days">Jours 0 – 5</div>
-                    <div class="cycle-desc">Règles · Repos privilégié</div>
                 </div>
             </label>
 
@@ -705,7 +711,6 @@
                 <div class="cycle-info">
                     <div class="cycle-name">Phase folliculaire</div>
                     <div class="cycle-days">Jours 6 – 13</div>
-                    <div class="cycle-desc">Énergie montante · Bonne récupération</div>
                 </div>
             </label>
 
@@ -715,7 +720,6 @@
                 <div class="cycle-info">
                     <div class="cycle-name">Phase ovulatoire</div>
                     <div class="cycle-days">Jours 14 – 16</div>
-                    <div class="cycle-desc">Pic d'énergie · Performance maximale</div>
                 </div>
             </label>
 
@@ -725,7 +729,6 @@
                 <div class="cycle-info">
                     <div class="cycle-name">Phase lutéale</div>
                     <div class="cycle-days">À partir du jour 16</div>
-                    <div class="cycle-desc">Fatigue possible · SPM en fin de phase</div>
                 </div>
             </label>
 
@@ -734,13 +737,12 @@
 
     <!-- SYMPTÔMES CYCLE -->
     <div class="card">
-        <div class="question-label">Symptômes liés au cycle <span class="required-star">*</span><br>
-            <small style="font-weight:400;color:#5f6368;">1 = très impactée · 5 = aucun impact</small>
+        <div class="question-label">
+            Impact du cycle sur ton état aujourd'hui <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très impactée &nbsp;·&nbsp; 5 = aucun impact</small>
         </div>
-        <div class="emoji-slider-wrapper">
-            <div class="emoji-row" id="row-cycleSymptoms"></div>
-        </div>
-        <input type="hidden" id="cycleSymptoms" value="">
+        <div class="slider-block" id="block-cycleSymptoms"></div>
+        <input type="hidden" id="cycleSymptoms" value="3">
     </div>
 
     <!-- COMMENTAIRE CYCLE -->
@@ -848,7 +850,7 @@
                         <th>Cors.B</th>
                         <th>Motiv.</th>
                         <th>Phase cycle</th>
-                        <th>Symptômes</th>
+                        <th>Impact cycle</th>
                         <th>Douleurs</th>
                         <th>Commentaire</th>
                         <th></th>
@@ -870,39 +872,59 @@
     document.getElementById('todayDate').textContent =
         new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
-    // ===== EMOJI BUTTONS =====
-    const emojiSets = {
-        default: [
-            { icon: '😩', label: 'Très mauvais' },
-            { icon: '😟', label: 'Mauvais' },
-            { icon: '😐', label: 'Moyen' },
-            { icon: '🙂', label: 'Bien' },
-            { icon: '😄', label: 'Excellent' }
-        ]
-    };
+    // ===== EMOJI SLIDER =====
+    const EMOJIS = [
+        { icon: '😩', label: 'Très mauvais' },
+        { icon: '😟', label: 'Mauvais' },
+        { icon: '😐', label: 'Moyen' },
+        { icon: '🙂', label: 'Bien' },
+        { icon: '😄', label: 'Excellent' }
+    ];
 
-    function buildEmojiRow(rowId, fieldId) {
-        const row = document.getElementById(rowId);
-        emojiSets.default.forEach((e, i) => {
-            const val = i + 1;
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'emoji-btn';
-            btn.innerHTML = `<span class="emoji-icon">${e.icon}</span><span class="emoji-label">${val} — ${e.label}</span>`;
-            btn.onclick = () => {
-                row.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                document.getElementById(fieldId).value = val;
-            };
-            row.appendChild(btn);
-        });
+    function buildSlider(blockId, fieldId) {
+        const block = document.getElementById(blockId);
+        const hidden = document.getElementById(fieldId);
+
+        block.innerHTML = `
+            <div class="slider-emoji-display" id="display-${fieldId}">
+                <span class="big-emoji" id="emoji-${fieldId}">${EMOJIS[2].icon}</span>
+                <div class="emoji-text" id="emojiText-${fieldId}">${EMOJIS[2].label}</div>
+            </div>
+            <div class="slider-track-wrap">
+                <input type="range" min="1" max="5" value="3" id="range-${fieldId}"
+                    oninput="updateSliderDisplay('${fieldId}', this.value)">
+            </div>
+            <div class="slider-dots-row">
+                ${EMOJIS.map(e => `<span>${e.icon}</span>`).join('')}
+            </div>
+            <div class="slider-labels-row">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            </div>
+        `;
+
+        updateSliderDisplay(fieldId, 3);
     }
 
+    function updateSliderDisplay(fieldId, val) {
+        val = parseInt(val);
+        const e = EMOJIS[val - 1];
+        document.getElementById('emoji-' + fieldId).textContent = e.icon;
+        document.getElementById('emojiText-' + fieldId).textContent = val + ' — ' + e.label;
+        document.getElementById(fieldId).value = val;
+
+        // Color gradient on track
+        const range = document.getElementById('range-' + fieldId);
+        const pct = (val - 1) / 4 * 100;
+        const colors = ['#ea4335','#ff9800','#fbbc04','#34a853','#1a73e8'];
+        range.style.background = `linear-gradient(to right, ${colors[val-1]} 0%, ${colors[val-1]} ${pct}%, #dadce0 ${pct}%, #dadce0 100%)`;
+    }
+
+    // Build all sliders
     ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
-        buildEmojiRow('row-'+id, id);
+        buildSlider('block-' + id, id);
     });
 
-    // ===== CYCLE SELECTION =====
+    // ===== CYCLE =====
     function selectCycle(label, val) {
         document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
         label.classList.add('selected');
@@ -913,8 +935,8 @@
         if (!confirm('Effacer toutes les réponses ?')) return;
         document.getElementById('playerName').value = '';
         ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
-            document.getElementById(id).value = '';
-            document.querySelectorAll(`#row-${id} .emoji-btn`).forEach(b => b.classList.remove('selected'));
+            document.getElementById('range-' + id).value = 3;
+            updateSliderDisplay(id, 3);
         });
         document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
         document.querySelectorAll('input[name="cycle"]').forEach(r => r.checked = false);
@@ -928,33 +950,20 @@
         const player = document.getElementById('playerName').value;
         if (!player) { alert('Veuillez sélectionner votre nom.'); return; }
 
-        const required = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
-        for (let id of required) {
-            if (!document.getElementById(id).value) {
-                alert('Merci de répondre à toutes les questions obligatoires (★).');
-                return;
-            }
-        }
-
         const cycleVal = document.querySelector('input[name="cycle"]:checked');
         if (!cycleVal) { alert('Veuillez sélectionner votre phase de cycle.'); return; }
 
-        if (!document.getElementById('cycleSymptoms').value) {
-            alert('Merci de renseigner les symptômes liés au cycle.');
-            return;
-        }
-
         const cycleLabels = {
-            menstrual: '🩸 Menstruelle (J0–5)',
+            menstrual:  '🩸 Menstruelle (J0–5)',
             follicular: '🌱 Folliculaire (J6–13)',
-            ovulatory: '⭐️ Ovulatoire (J14–16)',
-            luteal: '🌙 Lutéale (J16+)'
+            ovulatory:  '⭐️ Ovulatoire (J14–16)',
+            luteal:     '🌙 Lutéale (J16+)'
         };
 
         const entry = {
-            id: Date.now(),
-            date: new Date().toLocaleDateString('fr-FR'),
-            timestamp: Date.now(),
+            id:           Date.now(),
+            date:         new Date().toLocaleDateString('fr-FR'),
+            timestamp:    Date.now(),
             player,
             fatigue:      +document.getElementById('fatigue').value,
             sleep:        +document.getElementById('sleep').value,
@@ -999,4 +1008,156 @@
             document.getElementById('adminBtn').style.display = 'none';
             loadAdminData();
         } else {
-            document.getElementById('error
+            document.getElementById('errorMsg').style.display = 'block';
+        }
+    }
+
+    function logout() {
+        document.getElementById('adminPanel').style.display = 'none';
+        document.getElementById('formView').style.display = 'block';
+        document.getElementById('adminBtn').style.display = 'block';
+        document.getElementById('pwdInput').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    function getFilteredData() {
+        const days = +document.getElementById('filterDays').value;
+        const player = document.getElementById('filterPlayer').value;
+        const cutoff = Date.now() - days * 86400000;
+        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
+        return data.filter(d => d.timestamp >= cutoff && (player === 'all' || d.player === player));
+    }
+
+    function loadAdminData() {
+        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
+        const players = [...new Set(data.map(d => d.player))];
+        const sel = document.getElementById('filterPlayer');
+        sel.innerHTML = '<option value="all">Toutes</option>';
+        players.forEach(p => sel.innerHTML += `<option>${p}</option>`);
+        updateDashboard();
+    }
+
+    function updateDashboard() {
+        const data = getFilteredData();
+        renderStats(data);
+        renderTable(data);
+        renderCharts(data);
+    }
+
+    function avg(arr, key) {
+        return arr.length ? (arr.reduce((s,d) => s+d[key],0)/arr.length).toFixed(1) : '-';
+    }
+
+    function renderStats(data) {
+        document.getElementById('statTotal').textContent = data.length;
+        document.getElementById('statFatigue').textContent = avg(data,'fatigue');
+        document.getElementById('statSleep').textContent = avg(data,'sleep');
+        document.getElementById('statMood').textContent = avg(data,'mood');
+    }
+
+    function chipColor(val) {
+        if (val >= 4) return 'chip-green';
+        if (val >= 3) return 'chip-yellow';
+        return 'chip-red';
+    }
+
+    const emojiForVal = ['','😩','😟','😐','🙂','😄'];
+
+    function deleteEntry(id) {
+        if (!confirm('Supprimer cette réponse ?')) return;
+        let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
+        data = data.filter(d => d.id !== id);
+        localStorage.setItem('wellnessData', JSON.stringify(data));
+        loadAdminData();
+    }
+
+    function renderTable(data) {
+        const tbody = document.getElementById('dataTableBody');
+        if (!data.length) {
+            tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;color:#9aa0a6;padding:30px;">Aucune donnée</td></tr>';
+            return;
+        }
+        tbody.innerHTML = [...data].reverse().slice(0,60).map(d => `
+            <tr>
+                <td>${d.date}</td>
+                <td><strong>${d.player}</strong></td>
+                <td><span class="chip ${chipColor(d.fatigue)}">${emojiForVal[d.fatigue]} ${d.fatigue}</span></td>
+                <td><span class="chip ${chipColor(d.sleep)}">${emojiForVal[d.sleep]} ${d.sleep}</span></td>
+                <td><span class="chip ${chipColor(d.mood)}">${emojiForVal[d.mood]} ${d.mood}</span></td>
+                <td><span class="chip ${chipColor(d.stress)}">${emojiForVal[d.stress]} ${d.stress}</span></td>
+                <td><span class="chip ${chipColor(d.sorenessUp)}">${emojiForVal[d.sorenessUp]} ${d.sorenessUp}</span></td>
+                <td><span class="chip ${chipColor(d.sorenessDown)}">${emojiForVal[d.sorenessDown]} ${d.sorenessDown}</span></td>
+                <td><span class="chip ${chipColor(d.motivation)}">${emojiForVal[d.motivation]} ${d.motivation}</span></td>
+                <td style="font-size:0.82em">${d.cyclePhase||'—'}</td>
+                <td><span class="chip ${chipColor(d.cycleSymptoms)}">${emojiForVal[d.cycleSymptoms]} ${d.cycleSymptoms}</span></td>
+                <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368;font-size:0.82em" title="${d.injury}">${d.injury}</td>
+                <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368;font-size:0.82em" title="${d.comment}">${d.comment}</td>
+                <td><button class="btn-delete" onclick="deleteEntry(${d.id})">🗑</button></td>
+            </tr>
+        `).join('');
+    }
+
+    function renderCharts(data) {
+        const byDate = {};
+        data.forEach(d => {
+            if (!byDate[d.date]) byDate[d.date] = [];
+            byDate[d.date].push(d);
+        });
+        const dates = Object.keys(byDate).sort((a,b) => {
+            const p = s => { const [day,m,y]=s.split('/'); return new Date(y,m-1,day); };
+            return p(a)-p(b);
+        });
+
+        const a = (arr,k) => arr.length ? +(arr.reduce((s,d)=>s+d[k],0)/arr.length).toFixed(1) : null;
+
+        const opts = {
+            responsive: true,
+            plugins: { legend: { labels: { color:'#5f6368', font:{size:11} } } },
+            scales: {
+                x: { ticks:{color:'#9aa0a6',font:{size:10}}, grid:{color:'#f1f3f4'} },
+                y: { min:1, max:5, ticks:{color:'#9aa0a6'}, grid:{color:'#f1f3f4'} }
+            }
+        };
+
+        function mk(id, datasets) {
+            if (charts[id]) charts[id].destroy();
+            charts[id] = new Chart(document.getElementById(id), {
+                type:'line', data:{ labels:dates, datasets }, options: opts
+            });
+        }
+
+        mk('chartFatigue',[
+            {label:'Fatigue', data:dates.map(d=>a(byDate[d],'fatigue')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true},
+            {label:'Sommeil', data:dates.map(d=>a(byDate[d],'sleep')), borderColor:'#34a853', backgroundColor:'rgba(52,168,83,0.08)', tension:0.4, fill:true}
+        ]);
+        mk('chartMood',[
+            {label:'Humeur', data:dates.map(d=>a(byDate[d],'mood')), borderColor:'#fbbc04', backgroundColor:'rgba(251,188,4,0.08)', tension:0.4, fill:true},
+            {label:'Stress', data:dates.map(d=>a(byDate[d],'stress')), borderColor:'#ea4335', backgroundColor:'rgba(234,67,53,0.08)', tension:0.4, fill:true}
+        ]);
+        mk('chartSoreness',[
+            {label:'Haut', data:dates.map(d=>a(byDate[d],'sorenessUp')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true},
+            {label:'Bas', data:dates.map(d=>a(byDate[d],'sorenessDown')), borderColor:'#9334ea', backgroundColor:'rgba(147,52,234,0.08)', tension:0.4, fill:true}
+        ]);
+
+        const byPlayer = {};
+        data.forEach(d => { if(!byPlayer[d.player]) byPlayer[d.player]=[]; byPlayer[d.player].push(d); });
+        const players = Object.keys(byPlayer);
+        const scores = players.map(p => {
+            const e = byPlayer[p];
+            const keys = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
+            return +(e.reduce((s,d)=>s+keys.reduce((ss,k)=>ss+d[k],0),0)/(e.length*keys.length)).toFixed(1);
+        });
+
+        if (charts['chartPlayers']) charts['chartPlayers'].destroy();
+        charts['chartPlayers'] = new Chart(document.getElementById('chartPlayers'), {
+            type:'bar',
+            data:{
+                labels:players,
+                datasets:[{label:'Score', data:scores, backgroundColor:'rgba(26,115,232,0.7)', borderColor:'#1a73e8', borderWidth:1, borderRadius:4}]
+            },
+            options:{...opts, plugins:{legend:{display:false}}}
+        });
+    }
+</script>
+</body>
+</html>
