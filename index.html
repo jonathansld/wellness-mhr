@@ -15,6 +15,42 @@
             min-height: 100vh;
         }
 
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active { display: flex; }
+        .modal-box {
+            background: white;
+            border-radius: 8px;
+            padding: 28px 24px;
+            width: 320px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .modal-box h3 { margin-bottom: 16px; font-size: 1.1em; }
+        .modal-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            outline: none;
+        }
+        .modal-box input:focus { border-color: #1a73e8; }
+        .error-msg { color: #d93025; font-size: 0.82em; display: none; margin-bottom: 8px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+        .btn-cancel { background: transparent; border: none; color: #5f6368; cursor: pointer; padding: 8px 16px; border-radius: 4px; font-family: inherit; }
+        .btn-cancel:hover { background: #f1f3f4; }
+        .btn-login { background: #1a73e8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-family: inherit; }
+        .btn-login:hover { background: #1557b0; }
+
         .form-header {
             max-width: 640px;
             margin: 30px auto 0;
@@ -24,22 +60,9 @@
             padding: 24px 24px 20px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
-
-        .form-header img {
-            height: 80px;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .form-header h1 {
-            font-size: 1.7em;
-            font-weight: 400;
-            color: #202124;
-            margin-bottom: 6px;
-        }
-
+        .form-header img { height: 80px; margin-bottom: 12px; display: block; }
+        .form-header h1 { font-size: 1.7em; font-weight: 400; color: #202124; margin-bottom: 6px; }
         .form-header p { color: #5f6368; font-size: 0.9em; }
-
         .form-header .date-badge {
             display: inline-block;
             margin-top: 10px;
@@ -55,52 +78,47 @@
             max-width: 640px;
             margin: 0 auto;
             background: white;
-            padding: 10px 24px;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 8px 24px;
             font-size: 0.8em;
             color: #5f6368;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            border-top: 1px solid #f1f3f4;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
-
         .required-notice span { color: #d93025; }
+
+        .card {
+            max-width: 640px;
+            margin: 10px auto 0;
+            background: white;
+            border-radius: 8px;
+            padding: 20px 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+            border: 1px solid #e0e0e0;
+        }
+        .card:focus-within { border-color: #1a73e8; }
 
         .section-divider {
             max-width: 640px;
             margin: 20px auto 0;
-            background: white;
-            border-radius: 8px 8px 0 0;
-            border-top: 8px solid #1a73e8;
-            padding: 18px 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-        }
-
-        .section-divider.purple { border-top-color: #9334ea; }
-
-        .section-divider h2 {
-            font-size: 1.2em;
-            font-weight: 500;
-            color: #202124;
-        }
-
-        .section-divider p { color: #5f6368; font-size: 0.85em; margin-top: 4px; }
-
-        .card {
-            max-width: 640px;
-            margin: 12px auto;
-            background: white;
+            background: #e8f0fe;
             border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-            border: 1px solid #e0e0e0;
+            padding: 16px 24px;
+            border-left: 4px solid #1a73e8;
         }
+        .section-divider.purple {
+            background: #f3e8ff;
+            border-left-color: #9334ea;
+        }
+        .section-divider h2 { font-size: 1em; font-weight: 600; color: #202124; margin-bottom: 4px; }
+        .section-divider p { font-size: 0.85em; color: #5f6368; }
 
         .question-label {
             font-size: 0.95em;
             font-weight: 500;
             color: #202124;
-            margin-bottom: 24px;
+            margin-bottom: 14px;
+            line-height: 1.5;
         }
-
         .required-star { color: #d93025; }
 
         select {
@@ -115,7 +133,6 @@
             font-family: inherit;
             cursor: pointer;
         }
-
         select:focus { border-bottom: 2px solid #1a73e8; }
 
         textarea {
@@ -131,24 +148,17 @@
             font-family: inherit;
             min-height: 60px;
         }
-
         textarea:focus { border-bottom: 2px solid #1a73e8; }
 
-        /* ===== SLIDER EMOJI ===== */
+        /* SLIDER */
         .slider-block { width: 100%; }
-
-        .slider-emoji-display {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
+        .slider-emoji-display { text-align: center; margin-bottom: 12px; }
         .slider-emoji-display .big-emoji {
             font-size: 2.8em;
             display: block;
             line-height: 1;
             transition: all 0.2s;
         }
-
         .slider-emoji-display .emoji-text {
             font-size: 0.85em;
             color: #5f6368;
@@ -156,68 +166,37 @@
             font-weight: 500;
             min-height: 20px;
         }
-
-        .slider-track-wrap {
-            position: relative;
-            padding: 0 4px;
-        }
-
+        .slider-track-wrap { padding: 0 4px; margin-bottom: 6px; }
         input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
             width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #dadce0;
+            -webkit-appearance: none;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(to right, #1a73e8 50%, #dadce0 50%);
             outline: none;
             cursor: pointer;
         }
-
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
             width: 22px;
             height: 22px;
             border-radius: 50%;
             background: #1a73e8;
-            cursor: pointer;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            transition: background 0.2s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
         }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: #1a73e8;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .slider-labels-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
-
-        .slider-labels-row span {
-            font-size: 0.75em;
-            color: #9aa0a6;
-            width: 20%;
-            text-align: center;
-        }
-
         .slider-dots-row {
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
-            margin-top: 4px;
+            padding: 0 2px;
+            margin-bottom: 2px;
         }
-
-        .slider-dots-row span {
-            font-size: 1.2em;
+        .slider-dots-row span { font-size: 1.2em; }
+        .slider-labels-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4px;
         }
+        .slider-labels-row span { font-size: 0.75em; color: #9aa0a6; }
 
         /* CYCLE CARDS */
         .cycle-grid {
@@ -226,7 +205,6 @@
             gap: 10px;
             margin-top: 4px;
         }
-
         .cycle-option {
             border: 2px solid #e0e0e0;
             border-radius: 8px;
@@ -237,19 +215,15 @@
             align-items: flex-start;
             gap: 10px;
         }
-
         .cycle-option:hover { background: #f8f9fa; border-color: #9334ea; }
         .cycle-option.selected { background: #f3e8ff; border-color: #9334ea; }
-
         .cycle-option input[type="radio"] {
             accent-color: #9334ea;
             margin-top: 2px;
             flex-shrink: 0;
         }
-
         .cycle-info .cycle-name { font-size: 0.88em; font-weight: 600; color: #202124; }
         .cycle-info .cycle-days { font-size: 0.78em; color: #9334ea; font-weight: 500; margin-top: 1px; }
-
         .cycle-icon { font-size: 1.5em; flex-shrink: 0; }
 
         /* SUBMIT */
@@ -260,7 +234,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .btn-submit {
             background: #1a73e8;
             color: white;
@@ -273,9 +246,7 @@
             font-family: inherit;
             transition: background 0.2s;
         }
-
         .btn-submit:hover { background: #1557b0; }
-
         .btn-clear {
             background: transparent;
             color: #1a73e8;
@@ -285,7 +256,6 @@
             font-family: inherit;
             padding: 10px;
         }
-
         .btn-clear:hover { text-decoration: underline; }
 
         /* SUCCESS */
@@ -299,192 +269,105 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
             text-align: center;
         }
-
-        #successView .check-icon { font-size: 3em; margin-bottom: 16px; }
-        #successView h2 { font-weight: 400; font-size: 1.4em; margin-bottom: 10px; }
-        #successView p { color: #5f6368; font-size: 0.9em; margin-bottom: 24px; }
+        .check-icon { font-size: 3em; margin-bottom: 16px; }
+        #successView h2 { font-size: 1.4em; font-weight: 400; margin-bottom: 8px; }
+        #successView p { color: #5f6368; margin-bottom: 24px; }
         #successView button {
             background: #1a73e8;
             color: white;
             border: none;
             padding: 10px 24px;
             border-radius: 4px;
-            font-size: 0.9em;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9em;
         }
 
-        /* ADMIN BTN */
+        /* ADMIN */
+        #adminPanel { display: none; }
         #adminBtn {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: white;
             border: 1px solid #dadce0;
-            color: #5f6368;
             padding: 8px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.8em;
+            color: #5f6368;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             font-family: inherit;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active { display: flex; }
-
-        .modal-box {
-            background: white;
-            border-radius: 8px;
-            padding: 32px;
-            width: 360px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-
-        .modal-box h3 { color: #202124; font-weight: 500; margin-bottom: 20px; }
-
-        .modal-box input[type="password"] {
-            width: 100%;
-            padding: 10px 0;
-            border: none;
-            border-bottom: 2px solid #1a73e8;
-            font-size: 1em;
-            outline: none;
-            font-family: inherit;
-            margin-bottom: 20px;
-        }
-
-        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
-
-        .btn-cancel {
-            background: transparent;
-            border: none;
-            color: #1a73e8;
-            font-size: 0.9em;
-            cursor: pointer;
-            padding: 8px 12px;
-            font-family: inherit;
-            font-weight: 500;
-        }
-
-        .btn-login {
-            background: #1a73e8;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 500;
-        }
-
-        .error-msg {
-            color: #d93025;
-            font-size: 0.82em;
-            margin-top: -14px;
-            margin-bottom: 14px;
-            display: none;
-        }
-
-        /* ADMIN PANEL */
-        #adminPanel { display: none; background: #f0f4f9; min-height: 100vh; }
-
         .admin-topbar {
             background: white;
             border-bottom: 1px solid #e0e0e0;
-            padding: 16px 24px;
+            padding: 14px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
-
         .admin-topbar h1 {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: #202124;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
         }
-
-        .admin-topbar img { height: 36px; }
-
+        .admin-topbar img { height: 32px; }
         .btn-logout {
             background: transparent;
             border: 1px solid #dadce0;
-            color: #5f6368;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.85em;
             font-family: inherit;
+            font-size: 0.85em;
+            color: #5f6368;
         }
-
-        .admin-content { max-width: 1100px; margin: 24px auto; padding: 0 20px; }
-
-        .filters-bar {
-            background: white;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
+        .admin-content { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+        .admin-filters {
             display: flex;
-            gap: 20px;
-            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            align-items: center;
         }
-
-        .filter-group { display: flex; align-items: center; gap: 8px; }
-        .filter-group label { font-size: 0.85em; color: #5f6368; }
-        .filter-group select {
+        .admin-filters select, .admin-filters button {
+            padding: 8px 14px;
             border: 1px solid #dadce0;
             border-radius: 4px;
-            padding: 6px 10px;
+            font-family: inherit;
             font-size: 0.85em;
-            color: #202124;
-            width: auto;
-            border-bottom: 1px solid #dadce0;
+            background: white;
+            cursor: pointer;
         }
-
+        .admin-filters button { background: #1a73e8; color: white; border: none; }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-bottom: 20px;
         }
-
         .stat-card {
             background: white;
             border-radius: 8px;
-            padding: 16px 20px;
+            padding: 18px 16px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e0e0e0;
             text-align: center;
         }
-
-        .stat-card .stat-val { font-size: 2em; font-weight: 600; color: #1a73e8; }
-        .stat-card .stat-label { font-size: 0.78em; color: #5f6368; margin-top: 4px; }
-
+        .stat-val { font-size: 2em; font-weight: 300; color: #1a73e8; }
+        .stat-label { font-size: 0.78em; color: #5f6368; margin-top: 4px; }
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
             margin-bottom: 20px;
         }
-
         .chart-card {
             background: white;
             border-radius: 8px;
@@ -492,9 +375,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e0e0e0;
         }
-
         .chart-card h3 { font-size: 0.9em; font-weight: 500; color: #202124; margin-bottom: 16px; }
-
         .data-table-card {
             background: white;
             border-radius: 8px;
@@ -503,11 +384,8 @@
             border: 1px solid #e0e0e0;
             overflow-x: auto;
         }
-
         .data-table-card h3 { font-size: 0.9em; font-weight: 500; color: #202124; margin-bottom: 16px; }
-
         table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
-
         th {
             text-align: left;
             padding: 10px 12px;
@@ -517,17 +395,14 @@
             border-bottom: 1px solid #e0e0e0;
             white-space: nowrap;
         }
-
         td {
             padding: 10px 12px;
             border-bottom: 1px solid #f1f3f4;
             color: #202124;
             vertical-align: middle;
         }
-
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: #f8f9fa; }
-
         .chip {
             display: inline-flex;
             align-items: center;
@@ -537,11 +412,9 @@
             font-size: 0.78em;
             font-weight: 500;
         }
-
         .chip-green { background: #e6f4ea; color: #137333; }
         .chip-yellow { background: #fef9e7; color: #a16207; }
         .chip-red { background: #fce8e6; color: #c5221f; }
-
         .btn-delete {
             background: transparent;
             border: none;
@@ -551,7 +424,6 @@
             border-radius: 4px;
             font-size: 0.85em;
         }
-
         .btn-delete:hover { background: #fce8e6; }
 
         @media (max-width: 700px) {
@@ -577,7 +449,7 @@
     </div>
 </div>
 
-<!-- ===================== FORMULAIRE ===================== -->
+<!-- FORMULAIRE -->
 <div id="formView">
 
     <div class="form-header">
@@ -609,7 +481,7 @@
         </select>
     </div>
 
-    <!-- ===== PARTIE 1 ===== -->
+    <!-- PARTIE 1 -->
     <div class="section-divider">
         <h2>💪 Partie 1 — Bien-être physique & mental</h2>
         <p>Évalue chaque paramètre de 1 (très mauvais) à 5 (excellent)</p>
@@ -617,21 +489,30 @@
 
     <!-- FATIGUE -->
     <div class="card">
-        <div class="question-label">Niveau de fatigue <span class="required-star">*</span></div>
+        <div class="question-label">
+            Fatigue générale <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = épuisée &nbsp;·&nbsp; 5 = pleine d'énergie</small>
+        </div>
         <div class="slider-block" id="block-fatigue"></div>
         <input type="hidden" id="fatigue" value="3">
     </div>
 
     <!-- SOMMEIL -->
     <div class="card">
-        <div class="question-label">Qualité du sommeil <span class="required-star">*</span></div>
+        <div class="question-label">
+            Qualité du sommeil <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très mauvais &nbsp;·&nbsp; 5 = excellent</small>
+        </div>
         <div class="slider-block" id="block-sleep"></div>
         <input type="hidden" id="sleep" value="3">
     </div>
 
     <!-- HUMEUR -->
     <div class="card">
-        <div class="question-label">Humeur générale <span class="required-star">*</span></div>
+        <div class="question-label">
+            Humeur <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très mauvaise &nbsp;·&nbsp; 5 = excellente</small>
+        </div>
         <div class="slider-block" id="block-mood"></div>
         <input type="hidden" id="mood" value="3">
     </div>
@@ -639,8 +520,8 @@
     <!-- STRESS -->
     <div class="card">
         <div class="question-label">
-            Stress / Charge mentale <span class="required-star">*</span><br>
-            <small style="font-weight:400;color:#5f6368;">1 = très stressée &nbsp;·&nbsp; 5 = très sereine</small>
+            Niveau de stress <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = très stressée &nbsp;·&nbsp; 5 = aucun stress</small>
         </div>
         <div class="slider-block" id="block-stress"></div>
         <input type="hidden" id="stress" value="3">
@@ -668,7 +549,10 @@
 
     <!-- MOTIVATION -->
     <div class="card">
-        <div class="question-label">Motivation à l'entraînement <span class="required-star">*</span></div>
+        <div class="question-label">
+            Motivation à l'entraînement <span class="required-star">*</span><br>
+            <small style="font-weight:400;color:#5f6368;">1 = aucune motivation &nbsp;·&nbsp; 5 = très motivée</small>
+        </div>
         <div class="slider-block" id="block-motivation"></div>
         <input type="hidden" id="motivation" value="3">
     </div>
@@ -685,7 +569,7 @@
         <textarea id="comment" placeholder="Toute information utile pour le staff..."></textarea>
     </div>
 
-    <!-- ===== PARTIE 2 CYCLE ===== -->
+    <!-- PARTIE 2 CYCLE -->
     <div class="section-divider purple">
         <h2>🌸 Partie 2 — Cycle menstruel</h2>
         <p>Ces informations nous aident à adapter ta charge d'entraînement</p>
@@ -728,14 +612,14 @@
                 <span class="cycle-icon">🌙</span>
                 <div class="cycle-info">
                     <div class="cycle-name">Phase lutéale</div>
-                    <div class="cycle-days">À partir du jour 16</div>
+                    <div class="cycle-days">À partir de J16</div>
                 </div>
             </label>
 
         </div>
     </div>
 
-    <!-- SYMPTÔMES CYCLE -->
+    <!-- IMPACT CYCLE -->
     <div class="card">
         <div class="question-label">
             Impact du cycle sur ton état aujourd'hui <span class="required-star">*</span><br>
@@ -766,7 +650,7 @@
     <button onclick="newResponse()">Envoyer une autre réponse</button>
 </div>
 
-<!-- ===================== ADMIN PANEL ===================== -->
+<!-- ADMIN PANEL -->
 <div id="adminPanel">
     <div class="admin-topbar">
         <h1>
@@ -778,23 +662,18 @@
     </div>
 
     <div class="admin-content">
-
-        <div class="filters-bar">
-            <div class="filter-group">
-                <label>Période :</label>
-                <select id="filterDays" onchange="updateDashboard()">
-                    <option value="7">7 jours</option>
-                    <option value="14">14 jours</option>
-                    <option value="30">30 jours</option>
-                    <option value="999">Tout</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Joueuse :</label>
-                <select id="filterPlayer" onchange="updateDashboard()">
-                    <option value="all">Toutes</option>
-                </select>
-            </div>
+        <div class="admin-filters">
+            <select id="filterDays" onchange="updateDashboard()">
+                <option value="7">7 derniers jours</option>
+                <option value="14">14 derniers jours</option>
+                <option value="30" selected>30 derniers jours</option>
+                <option value="90">90 derniers jours</option>
+                <option value="9999">Tout</option>
+            </select>
+            <select id="filterPlayer" onchange="updateDashboard()">
+                <option value="all">Toutes les joueuses</option>
+            </select>
+            <button onclick="exportCSV()">⬇ Export CSV</button>
         </div>
 
         <div class="stats-grid">
@@ -859,7 +738,6 @@
                 <tbody id="dataTableBody"></tbody>
             </table>
         </div>
-
     </div>
 </div>
 
@@ -872,7 +750,7 @@
     document.getElementById('todayDate').textContent =
         new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
-    // ===== EMOJI SLIDER =====
+    // EMOJI SLIDER
     const EMOJIS = [
         { icon: '😩', label: 'Très mauvais' },
         { icon: '😟', label: 'Mauvais' },
@@ -881,63 +759,86 @@
         { icon: '😄', label: 'Excellent' }
     ];
 
-    function buildSlider(blockId, fieldId) {
+    // Emojis spéciaux pour impact cycle (inversé : 1=très impactée, 5=aucun impact)
+    const EMOJIS_CYCLE = [
+        { icon: '😖', label: 'Très impactée' },
+        { icon: '😟', label: 'Impactée' },
+        { icon: '😐', label: 'Moyennement' },
+        { icon: '🙂', label: 'Peu impactée' },
+        { icon: '😄', label: 'Aucun impact' }
+    ];
+
+    function buildSlider(blockId, fieldId, customEmojis) {
         const block = document.getElementById(blockId);
-        const hidden = document.getElementById(fieldId);
+        const emojis = customEmojis || EMOJIS;
 
         block.innerHTML = `
             <div class="slider-emoji-display" id="display-${fieldId}">
-                <span class="big-emoji" id="emoji-${fieldId}">${EMOJIS[2].icon}</span>
-                <div class="emoji-text" id="emojiText-${fieldId}">${EMOJIS[2].label}</div>
+                <span class="big-emoji" id="emoji-${fieldId}">${emojis[2].icon}</span>
+                <div class="emoji-text" id="emojiText-${fieldId}">${emojis[2].label}</div>
             </div>
             <div class="slider-track-wrap">
                 <input type="range" min="1" max="5" value="3" id="range-${fieldId}"
                     oninput="updateSliderDisplay('${fieldId}', this.value)">
             </div>
             <div class="slider-dots-row">
-                ${EMOJIS.map(e => `<span>${e.icon}</span>`).join('')}
+                ${emojis.map(e => `<span>${e.icon}</span>`).join('')}
             </div>
             <div class="slider-labels-row">
                 <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
             </div>
         `;
 
-        updateSliderDisplay(fieldId, 3);
+        // Stocker les emojis pour mise à jour
+        block.dataset.emojis = JSON.stringify(emojis);
+        updateSliderDisplay(fieldId, 3, emojis);
     }
 
-    function updateSliderDisplay(fieldId, val) {
+    function updateSliderDisplay(fieldId, val, emojis) {
         val = parseInt(val);
-        const e = EMOJIS[val - 1];
+        // Récupérer les emojis depuis le block si non fournis
+        if (!emojis) {
+            const block = document.getElementById('block-' + fieldId);
+            emojis = block && block.dataset.emojis ? JSON.parse(block.dataset.emojis) : EMOJIS;
+        }
+        const e = emojis[val - 1];
         document.getElementById('emoji-' + fieldId).textContent = e.icon;
         document.getElementById('emojiText-' + fieldId).textContent = val + ' — ' + e.label;
         document.getElementById(fieldId).value = val;
 
-        // Color gradient on track
-        const range = document.getElementById('range-' + fieldId);
-        const pct = (val - 1) / 4 * 100;
-        const colors = ['#ea4335','#ff9800','#fbbc04','#34a853','#1a73e8'];
-        range.style.background = `linear-gradient(to right, ${colors[val-1]} 0%, ${colors[val-1]} ${pct}%, #dadce0 ${pct}%, #dadce0 100%)`;
+        // Couleur du slider
+        const pct = ((val - 1) / 4) * 100;
+        document.getElementById('range-' + fieldId).style.background =
+            `linear-gradient(to right, #1a73e8 ${pct}%, #dadce0 ${pct}%)`;
     }
 
     // Build all sliders
-    ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
-        buildSlider('block-' + id, id);
-    });
+    buildSlider('block-fatigue', 'fatigue');
+    buildSlider('block-sleep', 'sleep');
+    buildSlider('block-mood', 'mood');
+    buildSlider('block-stress', 'stress');
+    buildSlider('block-sorenessUp', 'sorenessUp');
+    buildSlider('block-sorenessDown', 'sorenessDown');
+    buildSlider('block-motivation', 'motivation');
+    buildSlider('block-cycleSymptoms', 'cycleSymptoms', EMOJIS_CYCLE);
 
-    // ===== CYCLE =====
-    function selectCycle(label, val) {
+    // CYCLE SELECT
+    function selectCycle(el, val) {
         document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
-        label.classList.add('selected');
+        el.classList.add('selected');
+        el.querySelector('input[type="radio"]').checked = true;
     }
 
-    // ===== CLEAR =====
+    // CLEAR
     function clearForm() {
         if (!confirm('Effacer toutes les réponses ?')) return;
         document.getElementById('playerName').value = '';
-        ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation','cycleSymptoms'].forEach(id => {
+        ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'].forEach(id => {
             document.getElementById('range-' + id).value = 3;
-            updateSliderDisplay(id, 3);
+            updateSliderDisplay(id, 3, EMOJIS);
         });
+        document.getElementById('range-cycleSymptoms').value = 3;
+        updateSliderDisplay('cycleSymptoms', 3, EMOJIS_CYCLE);
         document.querySelectorAll('.cycle-option').forEach(l => l.classList.remove('selected'));
         document.querySelectorAll('input[name="cycle"]').forEach(r => r.checked = false);
         document.getElementById('injury').value = '';
@@ -945,7 +846,7 @@
         document.getElementById('cycleComment').value = '';
     }
 
-    // ===== SUBMIT =====
+    // SUBMIT
     function submitForm() {
         const player = document.getElementById('playerName').value;
         if (!player) { alert('Veuillez sélectionner votre nom.'); return; }
@@ -989,18 +890,28 @@
     }
 
     function newResponse() {
-        clearForm();
-        document.getElementById('formView').style.display = 'block';
         document.getElementById('successView').style.display = 'none';
+        document.getElementById('formView').style.display = 'block';
         document.getElementById('adminBtn').style.display = 'block';
+        clearForm();
     }
 
-    // ===== ADMIN =====
-    function openAdmin() { document.getElementById('loginModal').classList.add('active'); }
-    function closeModal() { document.getElementById('loginModal').classList.remove('active'); }
+    // ADMIN
+    const ADMIN_PWD = 'mhr2024';
+
+    function openAdmin() {
+        document.getElementById('loginModal').classList.add('active');
+        document.getElementById('pwdInput').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
+        setTimeout(() => document.getElementById('pwdInput').focus(), 100);
+    }
+
+    function closeModal() {
+        document.getElementById('loginModal').classList.remove('active');
+    }
 
     function checkLogin() {
-        if (document.getElementById('pwdInput').value === 'MHRESPOIRS') {
+        if (document.getElementById('pwdInput').value === ADMIN_PWD) {
             closeModal();
             document.getElementById('formView').style.display = 'none';
             document.getElementById('successView').style.display = 'none';
@@ -1016,8 +927,6 @@
         document.getElementById('adminPanel').style.display = 'none';
         document.getElementById('formView').style.display = 'block';
         document.getElementById('adminBtn').style.display = 'block';
-        document.getElementById('pwdInput').value = '';
-        document.getElementById('errorMsg').style.display = 'none';
     }
 
     function getFilteredData() {
@@ -1090,8 +999,8 @@
                 <td><span class="chip ${chipColor(d.motivation)}">${emojiForVal[d.motivation]} ${d.motivation}</span></td>
                 <td style="font-size:0.82em">${d.cyclePhase||'—'}</td>
                 <td><span class="chip ${chipColor(d.cycleSymptoms)}">${emojiForVal[d.cycleSymptoms]} ${d.cycleSymptoms}</span></td>
-                <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368;font-size:0.82em" title="${d.injury}">${d.injury}</td>
-                <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368;font-size:0.82em" title="${d.comment}">${d.comment}</td>
+                <td style="font-size:0.82em;max-width:120px">${d.injury}</td>
+                <td style="font-size:0.82em;max-width:120px">${d.comment}</td>
                 <td><button class="btn-delete" onclick="deleteEntry(${d.id})">🗑</button></td>
             </tr>
         `).join('');
@@ -1126,37 +1035,66 @@
             });
         }
 
-        mk('chartFatigue',[
-            {label:'Fatigue', data:dates.map(d=>a(byDate[d],'fatigue')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true},
-            {label:'Sommeil', data:dates.map(d=>a(byDate[d],'sleep')), borderColor:'#34a853', backgroundColor:'rgba(52,168,83,0.08)', tension:0.4, fill:true}
-        ]);
-        mk('chartMood',[
-            {label:'Humeur', data:dates.map(d=>a(byDate[d],'mood')), borderColor:'#fbbc04', backgroundColor:'rgba(251,188,4,0.08)', tension:0.4, fill:true},
-            {label:'Stress', data:dates.map(d=>a(byDate[d],'stress')), borderColor:'#ea4335', backgroundColor:'rgba(234,67,53,0.08)', tension:0.4, fill:true}
-        ]);
-        mk('chartSoreness',[
-            {label:'Haut', data:dates.map(d=>a(byDate[d],'sorenessUp')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true},
-            {label:'Bas', data:dates.map(d=>a(byDate[d],'sorenessDown')), borderColor:'#9334ea', backgroundColor:'rgba(147,52,234,0.08)', tension:0.4, fill:true}
+        mk('chartFatigue', [
+            { label:'Fatigue', data: dates.map(d=>a(byDate[d],'fatigue')), borderColor:'#ea4335', backgroundColor:'rgba(234,67,53,0.08)', tension:0.3, fill:true },
+            { label:'Sommeil', data: dates.map(d=>a(byDate[d],'sleep')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.3, fill:true }
         ]);
 
-        const byPlayer = {};
-        data.forEach(d => { if(!byPlayer[d.player]) byPlayer[d.player]=[]; byPlayer[d.player].push(d); });
-        const players = Object.keys(byPlayer);
-        const scores = players.map(p => {
-            const e = byPlayer[p];
-            const keys = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
-            return +(e.reduce((s,d)=>s+keys.reduce((ss,k)=>ss+d[k],0),0)/(e.length*keys.length)).toFixed(1);
+        mk('chartMood', [
+            { label:'Humeur', data: dates.map(d=>a(byDate[d],'mood')), borderColor:'#34a853', backgroundColor:'rgba(52,168,83,0.08)', tension:0.3, fill:true },
+            { label:'Stress', data: dates.map(d=>a(byDate[d],'stress')), borderColor:'#fbbc04', backgroundColor:'rgba(251,188,4,0.08)', tension:0.3, fill:true }
+        ]);
+
+        mk('chartSoreness', [
+            { label:'Haut du corps', data: dates.map(d=>a(byDate[d],'sorenessUp')), borderColor:'#9334ea', backgroundColor:'rgba(147,52,234,0.08)', tension:0.3, fill:true },
+            { label:'Bas du corps', data: dates.map(d=>a(byDate[d],'sorenessDown')), borderColor:'#e91e8c', backgroundColor:'rgba(233,30,140,0.08)', tension:0.3, fill:true }
+        ]);
+
+        // Chart par joueuse
+        const players = [...new Set(data.map(d=>d.player))];
+        const playerAvgs = players.map(p => {
+            const pd = data.filter(d=>d.player===p);
+            return ((+avg(pd,'fatigue'))+(+avg(pd,'sleep'))+(+avg(pd,'mood'))+(+avg(pd,'stress')))/4;
         });
-
         if (charts['chartPlayers']) charts['chartPlayers'].destroy();
         charts['chartPlayers'] = new Chart(document.getElementById('chartPlayers'), {
             type:'bar',
             data:{
-                labels:players,
-                datasets:[{label:'Score', data:scores, backgroundColor:'rgba(26,115,232,0.7)', borderColor:'#1a73e8', borderWidth:1, borderRadius:4}]
+                labels: players,
+                datasets:[{
+                    label:'Score moyen',
+                    data: playerAvgs.map(v=>+v.toFixed(1)),
+                    backgroundColor:'rgba(26,115,232,0.7)',
+                    borderRadius: 4
+                }]
             },
-            options:{...opts, plugins:{legend:{display:false}}}
+            options:{
+                responsive:true,
+                plugins:{ legend:{ display:false } },
+                scales:{
+                    x:{ ticks:{color:'#9aa0a6',font:{size:10}}, grid:{color:'#f1f3f4'} },
+                    y:{ min:1, max:5, ticks:{color:'#9aa0a6'}, grid:{color:'#f1f3f4'} }
+                }
+            }
         });
+    }
+
+    // EXPORT CSV
+    function exportCSV() {
+        const data = getFilteredData();
+        if (!data.length) { alert('Aucune donnée à exporter.'); return; }
+        const headers = ['Date','Joueuse','Fatigue','Sommeil','Humeur','Stress','Cors.Haut','Cors.Bas','Motivation','Phase cycle','Impact cycle','Douleurs','Commentaire','Commentaire cycle'];
+        const rows = data.map(d => [
+            d.date, d.player, d.fatigue, d.sleep, d.mood, d.stress,
+            d.sorenessUp, d.sorenessDown, d.motivation,
+            d.cyclePhase, d.cycleSymptoms, `"${d.injury}"`, `"${d.comment}"`, `"${d.cycleComment}"`
+        ]);
+        const csv = [headers, ...rows].map(r => r.join(';')).join('\n');
+        const blob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8;'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `wellness_mhr_${new Date().toLocaleDateString('fr-FR').replace(/\//g,'-')}.csv`;
+        a.click();
     }
 </script>
 </body>
