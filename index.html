@@ -3,186 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHR - Wellness</title>
+    <title>MHR - Wellness Check</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #0a1628;
-            color: #ffffff;
+            font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+            background: #f0f4f9;
+            color: #202124;
             min-height: 100vh;
         }
 
-        .header {
-            background: linear-gradient(135deg, #0d1f3c, #1a3a6b);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid #1e90ff;
+        /* HEADER BANNER */
+        .form-header {
+            max-width: 640px;
+            margin: 30px auto 0;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            border-top: 10px solid #1a73e8;
+            padding: 24px 24px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
 
-        .header img {
-            height: 100px;
-            margin-bottom: 10px;
-        }
-
-        .header h1 {
-            color: #ffffff;
-            font-size: 1.8em;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .header p {
-            color: #7eb8f7;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .card {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-
-        .card h2 {
-            color: #1e90ff;
-            font-size: 1.1em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #1e3a6e;
-        }
-
-        .question-block {
-            margin-bottom: 25px;
-        }
-
-        .question-block label {
-            display: block;
-            font-size: 0.95em;
-            color: #a8c8f0;
+        .form-header img {
+            height: 70px;
             margin-bottom: 12px;
+            display: block;
+        }
+
+        .form-header h1 {
+            font-size: 1.7em;
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 6px;
+        }
+
+        .form-header p {
+            color: #5f6368;
+            font-size: 0.9em;
+        }
+
+        .form-header .date-badge {
+            display: inline-block;
+            margin-top: 10px;
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
             font-weight: 500;
         }
 
-        .slider-container {
-            position: relative;
+        /* REQUIRED NOTICE */
+        .required-notice {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.8em;
+            color: #5f6368;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .required-notice span {
+            color: #d93025;
+        }
+
+        /* CARDS */
+        .card {
+            max-width: 640px;
+            margin: 12px auto;
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            border: 1px solid #e0e0e0;
+            transition: border-color 0.2s;
+        }
+
+        .card:focus-within {
+            border-left: 3px solid #1a73e8;
+        }
+
+        .question-label {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .required-star {
+            color: #d93025;
+            font-size: 0.9em;
+        }
+
+        /* SELECT / INPUT */
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            color: #202124;
+            font-size: 0.95em;
+            outline: none;
+            font-family: inherit;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-bottom: 2px solid #1a73e8;
+        }
+
+        /* TEXTAREA */
+        textarea {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            color: #202124;
+            font-size: 0.95em;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+            min-height: 50px;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            border-bottom: 2px solid #1a73e8;
+        }
+
+        /* SLIDER SECTION */
+        .slider-wrapper {
+            margin-top: 8px;
+        }
+
+        .slider-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .slider-desc {
+            font-size: 0.78em;
+            color: #5f6368;
+        }
+
+        .slider-current {
+            background: #1a73e8;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            flex-shrink: 0;
         }
 
         input[type="range"] {
             width: 100%;
             -webkit-appearance: none;
-            height: 6px;
-            background: #1e3a6e;
-            border-radius: 3px;
+            height: 4px;
+            background: #dadce0;
+            border-radius: 2px;
             outline: none;
+            cursor: pointer;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #1e90ff;
+            width: 18px;
+            height: 18px;
+            background: #1a73e8;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 8px rgba(30,144,255,0.5);
+            border: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            box-shadow: 0 0 0 8px rgba(26,115,232,0.15);
         }
 
         .slider-labels {
             display: flex;
             justify-content: space-between;
-            margin-top: 6px;
-            font-size: 0.75em;
-            color: #4a7ab5;
+            margin-top: 4px;
+            font-size: 0.72em;
+            color: #9aa0a6;
         }
 
-        .slider-value {
-            text-align: center;
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #1e90ff;
-            margin-top: 8px;
+        /* RADIO STYLE */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        select {
-            width: 100%;
-            padding: 12px 15px;
-            background: #0a1628;
-            border: 1px solid #1e3a6e;
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 8px;
             border-radius: 4px;
-            color: #ffffff;
-            font-size: 0.95em;
-            outline: none;
             cursor: pointer;
+            transition: background 0.15s;
         }
 
-        select:focus {
-            border-color: #1e90ff;
+        .radio-option:hover {
+            background: #f1f3f4;
         }
 
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: #0a1628;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
-            color: #ffffff;
-            font-size: 0.95em;
-            resize: vertical;
-            min-height: 80px;
-            outline: none;
-            font-family: inherit;
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            accent-color: #1a73e8;
+            cursor: pointer;
+            flex-shrink: 0;
         }
 
-        textarea:focus {
-            border-color: #1e90ff;
+        .radio-option span {
+            font-size: 0.9em;
+            color: #202124;
+        }
+
+        /* SUBMIT BUTTON */
+        .form-footer {
+            max-width: 640px;
+            margin: 12px auto 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .btn-submit {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #1e90ff, #0066cc);
+            background: #1a73e8;
             color: white;
             border: none;
+            padding: 10px 24px;
             border-radius: 4px;
-            font-size: 1em;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 0.9em;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            font-family: inherit;
+            letter-spacing: 0.25px;
+            transition: background 0.2s, box-shadow 0.2s;
         }
 
         .btn-submit:hover {
-            background: linear-gradient(135deg, #3aa0ff, #1e90ff);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+            background: #1557b0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        .success-msg {
+        .btn-clear {
+            background: transparent;
+            color: #1a73e8;
+            border: none;
+            font-size: 0.85em;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 10px;
+        }
+
+        .btn-clear:hover { text-decoration: underline; }
+
+        /* SUCCESS */
+        #successView {
             display: none;
-            background: #0d2e1a;
-            border: 1px solid #1a7a3a;
-            border-radius: 4px;
-            padding: 20px;
+            max-width: 640px;
+            margin: 60px auto;
+            background: white;
+            border-radius: 8px;
+            padding: 40px 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            border: 1px solid #e0e0e0;
             text-align: center;
-            color: #4caf50;
-            font-weight: 600;
-            margin-top: 20px;
+        }
+
+        #successView .check-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+
+        #successView h2 {
+            color: #202124;
+            font-weight: 400;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        #successView p {
+            color: #5f6368;
+            font-size: 0.9em;
+            margin-bottom: 24px;
+        }
+
+        #successView button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+            font-family: inherit;
         }
 
         /* ADMIN */
@@ -190,97 +326,246 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            color: #4a7ab5;
-            padding: 10px 16px;
-            border-radius: 4px;
+            background: white;
+            border: 1px solid #dadce0;
+            color: #5f6368;
+            padding: 8px 14px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 0.8em;
+            font-family: inherit;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
+        #adminBtn:hover { background: #f1f3f4; }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-box {
+            background: white;
+            border-radius: 8px;
+            padding: 32px;
+            width: 360px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .modal-box h3 {
+            color: #202124;
+            font-weight: 500;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .modal-box input[type="password"] {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 2px solid #1a73e8;
+            font-size: 1em;
+            outline: none;
+            font-family: inherit;
+            margin-bottom: 20px;
+            color: #202124;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: none;
+            color: #1a73e8;
+            font-size: 0.9em;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .btn-login {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .error-msg {
+            color: #d93025;
+            font-size: 0.82em;
+            margin-top: -14px;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        /* ADMIN PANEL */
         #adminPanel {
             display: none;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            background: #f0f4f9;
+            min-height: 100vh;
         }
 
-        .admin-header {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
-            padding: 20px 30px;
-            margin-bottom: 20px;
+        .admin-topbar {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 16px 24px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .admin-topbar h1 {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #202124;
+            display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .admin-header h2 {
-            color: #1e90ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .admin-topbar img {
+            height: 36px;
         }
 
-        .filters {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
+        .btn-logout {
+            background: transparent;
+            border: 1px solid #dadce0;
+            color: #5f6368;
+            padding: 8px 16px;
             border-radius: 4px;
-            padding: 20px 30px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+        }
+
+        .admin-content {
+            max-width: 1100px;
+            margin: 24px auto;
+            padding: 0 20px;
+        }
+
+        .filters-bar {
+            background: white;
+            border-radius: 8px;
+            padding: 16px 20px;
             margin-bottom: 20px;
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 20px;
             align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
         }
 
-        .filters select {
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 0.85em;
+            color: #5f6368;
+        }
+
+        .filter-group select {
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 0.85em;
+            color: #202124;
             width: auto;
-            padding: 8px 12px;
+            border-bottom: 1px solid #dadce0;
         }
 
-        .filters label {
-            color: #a8c8f0;
-            font-size: 0.9em;
+        .filter-group select:focus {
+            border: 2px solid #1a73e8;
+            border-radius: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .stat-card .stat-val {
+            font-size: 2em;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.78em;
+            color: #5f6368;
+            margin-top: 4px;
         }
 
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 16px;
             margin-bottom: 20px;
         }
 
         .chart-card {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
+            background: white;
+            border-radius: 8px;
             padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
         }
 
         .chart-card h3 {
-            color: #1e90ff;
             font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 16px;
         }
 
-        .data-table {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
+        .data-table-card {
+            background: white;
+            border-radius: 8px;
             padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
             overflow-x: auto;
         }
 
-        .data-table h3 {
-            color: #1e90ff;
+        .data-table-card h3 {
             font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 16px;
         }
 
         table {
@@ -290,312 +575,319 @@
         }
 
         th {
-            background: #0a1628;
-            color: #7eb8f7;
-            padding: 10px 12px;
             text-align: left;
-            font-weight: 600;
-            text-transform: uppercase;
+            padding: 10px 12px;
+            color: #5f6368;
+            font-weight: 500;
             font-size: 0.8em;
-            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0e0e0;
+            white-space: nowrap;
         }
 
         td {
             padding: 10px 12px;
-            border-bottom: 1px solid #1e3a6e;
-            color: #d0e4f7;
+            border-bottom: 1px solid #f1f3f4;
+            color: #202124;
+            vertical-align: middle;
         }
 
-        tr:hover td {
-            background: #0a1628;
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #f8f9fa; }
+
+        .chip {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: 500;
         }
 
-        .badge {
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            font-weight: 600;
-        }
-
-        .badge-green { background: #0d2e1a; color: #4caf50; }
-        .badge-yellow { background: #2e2200; color: #ffc107; }
-        .badge-red { background: #2e0d0d; color: #f44336; }
+        .chip-green { background: #e6f4ea; color: #137333; }
+        .chip-yellow { background: #fef9e7; color: #a16207; }
+        .chip-red { background: #fce8e6; color: #c5221f; }
 
         .btn-delete {
-            background: #2e0d0d;
-            color: #f44336;
-            border: 1px solid #f44336;
-            padding: 4px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.8em;
-        }
-
-        .btn-delete:hover {
-            background: #f44336;
-            color: white;
-        }
-
-        .btn-logout {
             background: transparent;
-            border: 1px solid #4a7ab5;
-            color: #4a7ab5;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active { display: flex; }
-
-        .modal-box {
-            background: #0d1f3c;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
-            padding: 40px;
-            width: 350px;
-            text-align: center;
-        }
-
-        .modal-box h3 {
-            color: #1e90ff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .modal-box input {
-            width: 100%;
-            padding: 12px;
-            background: #0a1628;
-            border: 1px solid #1e3a6e;
-            border-radius: 4px;
-            color: white;
-            font-size: 1em;
-            text-align: center;
-            letter-spacing: 3px;
-            outline: none;
-            margin-bottom: 15px;
-        }
-
-        .modal-box input:focus { border-color: #1e90ff; }
-
-        .btn-login {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #1e90ff, #0066cc);
-            color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 1em;
-            font-weight: 700;
+            color: #d93025;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .error-msg {
-            color: #f44336;
+            padding: 4px 8px;
+            border-radius: 4px;
             font-size: 0.85em;
-            margin-top: 10px;
-            display: none;
         }
 
-        @media (max-width: 768px) {
+        .btn-delete:hover { background: #fce8e6; }
+
+        @media (max-width: 700px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; }
             .charts-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- MODAL LOGIN ADMIN -->
+<!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
     <div class="modal-box">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/४c/Logo_MHR_2022.svg/200px-Logo_MHR_2022.svg.png" height="60" style="margin-bottom:15px;" onerror="this.style.display='none'">
-        <h3>Accès Admin</h3>
+        <h3>🔐 Accès administrateur</h3>
         <input type="password" id="pwdInput" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkLogin()">
-        <button class="btn-login" onclick="checkLogin()">Connexion</button>
         <p class="error-msg" id="errorMsg">Mot de passe incorrect</p>
-        <p style="margin-top:15px;"><a href="#" onclick="closeModal()" style="color:#4a7ab5;font-size:0.85em;">← Retour au formulaire</a></p>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+            <button class="btn-login" onclick="checkLogin()">Connexion</button>
+        </div>
     </div>
 </div>
 
 <!-- FORMULAIRE -->
 <div id="formView">
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/४c/Logo_MHR_2022.svg/200px-Logo_MHR_2022.svg.png" 
+
+    <div class="form-header">
+        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4c/Logo_MHR_2022.svg/200px-Logo_MHR_2022.svg.png"
              onerror="this.style.display='none'" alt="MHR">
-        <h1>Wellness Check</h1>
-        <p>Montpellier Hérault Rugby — Suivi quotidien</p>
+        <h1>Wellness Check — MHR</h1>
+        <p>Montpellier Hérault Rugby · Suivi quotidien du bien-être</p>
+        <span class="date-badge" id="todayDate"></span>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <h2>Identification</h2>
-            <div class="question-block">
-                <label>Joueuse</label>
-                <select id="playerName">
-                    <option value="">-- Sélectionnez votre nom --</option>
-                    <option>Agathe</option>
-                    <option>Alice</option>
-                    <option>Amandine</option>
-                    <option>Anaïs</option>
-                    <option>Axelle</option>
-                    <option>Camille</option>
-                    <option>Charlotte</option>
-                    <option>Clara</option>
-                    <option>Clémence</option>
-                    <option>Elena</option>
-                    <option>Elisa</option>
-                    <option>Emma</option>
-                    <option>Eva</option>
-                    <option>Inès</option>
-                    <option>Julie</option>
-                    <option>Laura</option>
-                    <option>Laure</option>
-                    <option>Léa</option>
-                    <option>Lucie</option>
-                    <option>Manon</option>
-                    <option>Marine</option>
-                    <option>Marion</option>
-                    <option>Mathilde</option>
-                    <option>Nina</option>
-                    <option>Noémie</option>
-                    <option>Océane</option>
-                    <option>Pauline</option>
-                    <option>Romane</option>
-                    <option>Sarah</option>
-                    <option>Sofia</option>
-                    <option>Valentine</option>
-                    <option>Victoria</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>État Général</h2>
-            <div class="question-block">
-                <label>Niveau de fatigue <span style="color:#1e90ff">(1 = Très fatigué · 10 = Très frais)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="fatigue" oninput="updateVal('fatigue','fatigueVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="fatigueVal">5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <label>Qualité du sommeil <span style="color:#1e90ff">(1 = Très mauvais · 10 = Excellent)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="sleep" oninput="updateVal('sleep','sleepVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="sleepVal">5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <label>Humeur générale <span style="color:#1e90ff">(1 = Très basse · 10 = Excellente)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="mood" oninput="updateVal('mood','moodVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="moodVal">5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <label>Stress / Charge mentale <span style="color:#1e90ff">(1 = Très stressée · 10 = Très sereine)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="stress" oninput="updateVal('stress','stressVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="stressVal">5</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>État Physique</h2>
-            <div class="question-block">
-                <label>Courbatures haut du corps <span style="color:#1e90ff">(1 = Très douloureuse · 10 = Aucune douleur)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="sorenessUp" oninput="updateVal('sorenessUp','sorenessUpVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="sorenessUpVal">5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <label>Courbatures bas du corps <span style="color:#1e90ff">(1 = Très douloureuse · 10 = Aucune douleur)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="sorenessDown" oninput="updateVal('sorenessDown','sorenessDownVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="sorenessDownVal">5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <label>Motivation à l'entraînement <span style="color:#1e90ff">(1 = Très faible · 10 = Très motivée)</span></label>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" id="motivation" oninput="updateVal('motivation','motivationVal')">
-                    <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-                    <div class="slider-value" id="motivationVal">5</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Remarques</h2>
-            <div class="question-block">
-                <label>Blessure / Douleur particulière ?</label>
-                <select id="injury">
-                    <option value="non">Non, tout va bien</option>
-                    <option value="leger">Légère gêne</option>
-                    <option value="moyen">Douleur modérée</option>
-                    <option value="severe">Douleur sévère</option>
-                </select>
-            </div>
-            <div class="question-block">
-                <label>Commentaire libre (optionnel)</label>
-                <textarea id="comment" placeholder="Précisez si besoin..."></textarea>
-            </div>
-        </div>
-
-        <button class="btn-submit" onclick="submitForm()">✓ Envoyer mon bilan</button>
-        <div class="success-msg" id="successMsg">✓ Bilan envoyé avec succès ! Merci.</div>
+    <div class="required-notice">
+        <span>*</span> Indique une question obligatoire
     </div>
+
+    <!-- IDENTIFICATION -->
+    <div class="card">
+        <div class="question-label">Ton prénom <span class="required-star">*</span></div>
+        <select id="playerName">
+            <option value="">Sélectionne ton nom</option>
+            <option>Agathe</option><option>Alice</option><option>Amandine</option>
+            <option>Anaïs</option><option>Axelle</option><option>Camille</option>
+            <option>Charlotte</option><option>Clara</option><option>Clémence</option>
+            <option>Elena</option><option>Elisa</option><option>Emma</option>
+            <option>Eva</option><option>Inès</option><option>Julie</option>
+            <option>Laura</option><option>Laure</option><option>Léa</option>
+            <option>Lucie</option><option>Manon</option><option>Marine</option>
+            <option>Marion</option><option>Mathilde</option><option>Nina</option>
+            <option>Noémie</option><option>Océane</option><option>Pauline</option>
+            <option>Romane</option><option>Sarah</option><option>Sofia</option>
+            <option>Valentine</option><option>Victoria</option>
+        </select>
+    </div>
+
+    <!-- FATIGUE -->
+    <div class="card">
+        <div class="question-label">Niveau de fatigue <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Épuisée &nbsp;·&nbsp; 10 = Très fraîche</span>
+                <div class="slider-current" id="fatigueVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="fatigue"
+                   oninput="updateVal('fatigue','fatigueVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOMMEIL -->
+    <div class="card">
+        <div class="question-label">Qualité du sommeil <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très mauvais &nbsp;·&nbsp; 10 = Excellent</span>
+                <div class="slider-current" id="sleepVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="sleep"
+                   oninput="updateVal('sleep','sleepVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HUMEUR -->
+    <div class="card">
+        <div class="question-label">Humeur générale <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très basse &nbsp;·&nbsp; 10 = Excellente</span>
+                <div class="slider-current" id="moodVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="mood"
+                   oninput="updateVal('mood','moodVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- STRESS -->
+    <div class="card">
+        <div class="question-label">Stress / Charge mentale <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très stressée &nbsp;·&nbsp; 10 = Très sereine</span>
+                <div class="slider-current" id="stressVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="stress"
+                   oninput="updateVal('stress','stressVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURBATURES HAUT -->
+    <div class="card">
+        <div class="question-label">Courbatures — haut du corps <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très douloureuse &nbsp;·&nbsp; 10 = Aucune douleur</span>
+                <div class="slider-current" id="sorenessUpVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="sorenessUp"
+                   oninput="updateVal('sorenessUp','sorenessUpVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURBATURES BAS -->
+    <div class="card">
+        <div class="question-label">Courbatures — bas du corps <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très douloureuse &nbsp;·&nbsp; 10 = Aucune douleur</span>
+                <div class="slider-current" id="sorenessDownVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="sorenessDown"
+                   oninput="updateVal('sorenessDown','sorenessDownVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOTIVATION -->
+    <div class="card">
+        <div class="question-label">Motivation à l'entraînement <span class="required-star">*</span></div>
+        <div class="slider-wrapper">
+            <div class="slider-top">
+                <span class="slider-desc">1 = Très faible &nbsp;·&nbsp; 10 = Très motivée</span>
+                <div class="slider-current" id="motivationVal">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="motivation"
+                   oninput="updateVal('motivation','motivationVal')">
+            <div class="slider-labels">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLESSURE -->
+    <div class="card">
+        <div class="question-label">Blessure ou douleur particulière ? <span class="required-star">*</span></div>
+        <div class="radio-group">
+            <label class="radio-option">
+                <input type="radio" name="injury" value="non" checked>
+                <span>Non, tout va bien</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="injury" value="leger">
+                <span>Légère gêne</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="injury" value="moyen">
+                <span>Douleur modérée</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="injury" value="severe">
+                <span>Douleur sévère</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- COMMENTAIRE -->
+    <div class="card">
+        <div class="question-label">Commentaire libre</div>
+        <textarea id="comment" placeholder="Précise si besoin..."></textarea>
+    </div>
+
+    <div class="form-footer">
+        <button class="btn-submit" onclick="submitForm()">Envoyer</button>
+        <button class="btn-clear" onclick="clearForm()">Effacer le formulaire</button>
+    </div>
+
 </div>
 
-<!-- PANEL ADMIN -->
+<!-- SUCCESS VIEW -->
+<div id="successView">
+    <div class="check-icon">✅</div>
+    <h2>Réponse enregistrée</h2>
+    <p>Merci ! Ton bilan a bien été envoyé.</p>
+    <button onclick="newResponse()">Envoyer une autre réponse</button>
+</div>
+
+<!-- ADMIN PANEL -->
 <div id="adminPanel">
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/४c/Logo_MHR_2022.svg/200px-Logo_MHR_2022.svg.png" 
-             onerror="this.style.display='none'" height="80" alt="MHR">
-        <h1>Dashboard Admin</h1>
-        <p>Suivi Wellness — MHR</p>
+    <div class="admin-topbar">
+        <h1>
+            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4c/Logo_MHR_2022.svg/200px-Logo_MHR_2022.svg.png"
+                 onerror="this.style.display='none'" alt="MHR">
+            Dashboard Wellness — MHR
+        </h1>
+        <button class="btn-logout" onclick="logout()">Déconnexion</button>
     </div>
 
-    <div style="padding:20px; max-width:1200px; margin:0 auto;">
-        <div class="admin-header">
-            <h2>📊 Tableau de bord</h2>
-            <button class="btn-logout" onclick="logout()">Déconnexion</button>
+    <div class="admin-content">
+
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label>Période :</label>
+                <select id="filterDays" onchange="updateDashboard()">
+                    <option value="7">7 jours</option>
+                    <option value="14">14 jours</option>
+                    <option value="30">30 jours</option>
+                    <option value="999">Tout</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Joueuse :</label>
+                <select id="filterPlayer" onchange="updateDashboard()">
+                    <option value="all">Toutes</option>
+                </select>
+            </div>
         </div>
 
-        <div class="filters">
-            <label>Période :</label>
-            <select id="filterDays" onchange="updateDashboard()">
-                <option value="7">7 derniers jours</option>
-                <option value="14">14 derniers jours</option>
-                <option value="30">30 derniers jours</option>
-            </select>
-            <label>Joueuse :</label>
-            <select id="filterPlayer" onchange="updateDashboard()">
-                <option value="all">Toutes</option>
-            </select>
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val" id="statTotal">0</div>
+                <div class="stat-label">Réponses totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="statFatigue">-</div>
+                <div class="stat-label">Fatigue moy.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="statSleep">-</div>
+                <div class="stat-label">Sommeil moy.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" id="statMood">-</div>
+                <div class="stat-label">Humeur moy.</div>
+            </div>
         </div>
 
+        <!-- CHARTS -->
         <div class="charts-grid">
             <div class="chart-card">
                 <h3>Fatigue & Sommeil</h3>
@@ -615,8 +907,9 @@
             </div>
         </div>
 
-        <div class="data-table">
-            <h3>📋 Réponses détaillées</h3>
+        <!-- TABLE -->
+        <div class="data-table-card">
+            <h3>Réponses détaillées</h3>
             <table>
                 <thead>
                     <tr>
@@ -626,31 +919,45 @@
                         <th>Sommeil</th>
                         <th>Humeur</th>
                         <th>Stress</th>
-                        <th>Cors. Haut</th>
-                        <th>Cors. Bas</th>
-                        <th>Motivation</th>
+                        <th>Cors. H</th>
+                        <th>Cors. B</th>
+                        <th>Motiv.</th>
                         <th>Blessure</th>
                         <th>Commentaire</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="dataTableBody"></tbody>
             </table>
         </div>
+
     </div>
 </div>
 
 <button id="adminBtn" onclick="openAdmin()">⚙ Admin</button>
 
 <script>
-    // Charts references
     let charts = {};
+
+    // Date du jour
+    document.getElementById('todayDate').textContent =
+        new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
     function updateVal(id, valId) {
         document.getElementById(valId).textContent = document.getElementById(id).value;
     }
 
-    // === SUBMIT FORM ===
+    function clearForm() {
+        if (!confirm('Effacer toutes les réponses ?')) return;
+        document.getElementById('playerName').value = '';
+        ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'].forEach(id => {
+            document.getElementById(id).value = 5;
+            document.getElementById(id+'Val').textContent = '5';
+        });
+        document.querySelector('input[name="injury"][value="non"]').checked = true;
+        document.getElementById('comment').value = '';
+    }
+
     function submitForm() {
         const player = document.getElementById('playerName').value;
         if (!player) { alert('Veuillez sélectionner votre nom.'); return; }
@@ -667,7 +974,7 @@
             sorenessUp: +document.getElementById('sorenessUp').value,
             sorenessDown: +document.getElementById('sorenessDown').value,
             motivation: +document.getElementById('motivation').value,
-            injury: document.getElementById('injury').value,
+            injury: document.querySelector('input[name="injury"]:checked').value,
             comment: document.getElementById('comment').value
         };
 
@@ -675,11 +982,19 @@
         data.push(entry);
         localStorage.setItem('wellnessData', JSON.stringify(data));
 
-        document.getElementById('successMsg').style.display = 'block';
-        setTimeout(() => document.getElementById('successMsg').style.display = 'none', 3000);
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+        document.getElementById('adminBtn').style.display = 'none';
     }
 
-    // === ADMIN ===
+    function newResponse() {
+        clearForm();
+        document.getElementById('formView').style.display = 'block';
+        document.getElementById('successView').style.display = 'none';
+        document.getElementById('adminBtn').style.display = 'block';
+    }
+
+    // ADMIN
     function openAdmin() {
         document.getElementById('loginModal').classList.add('active');
     }
@@ -689,10 +1004,10 @@
     }
 
     function checkLogin() {
-        const pwd = document.getElementById('pwdInput').value;
-        if (pwd === 'MHRESPOIRS') {
+        if (document.getElementById('pwdInput').value === 'MHRESPOIRS') {
             closeModal();
             document.getElementById('formView').style.display = 'none';
+            document.getElementById('successView').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
             document.getElementById('adminBtn').style.display = 'none';
             loadAdminData();
@@ -702,8 +1017,8 @@
     }
 
     function logout() {
-        document.getElementById('formView').style.display = 'block';
         document.getElementById('adminPanel').style.display = 'none';
+        document.getElementById('formView').style.display = 'block';
         document.getElementById('adminBtn').style.display = 'block';
         document.getElementById('pwdInput').value = '';
         document.getElementById('errorMsg').style.display = 'none';
@@ -718,7 +1033,6 @@
     }
 
     function loadAdminData() {
-        // Populate player filter
         let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
         const players = [...new Set(data.map(d => d.player))];
         const sel = document.getElementById('filterPlayer');
@@ -729,17 +1043,28 @@
 
     function updateDashboard() {
         const data = getFilteredData();
+        renderStats(data);
         renderTable(data);
         renderCharts(data);
     }
 
-    function badgeColor(val) {
-        if (val >= 7) return 'badge-green';
-        if (val >= 4) return 'badge-yellow';
-        return 'badge-red';
+    function avg(arr, key) {
+        return arr.length ? (arr.reduce((s,d) => s+d[key],0)/arr.length).toFixed(1) : '-';
     }
 
-    // === DELETE ===
+    function renderStats(data) {
+        document.getElementById('statTotal').textContent = data.length;
+        document.getElementById('statFatigue').textContent = avg(data,'fatigue');
+        document.getElementById('statSleep').textContent = avg(data,'sleep');
+        document.getElementById('statMood').textContent = avg(data,'mood');
+    }
+
+    function chipColor(val) {
+        if (val >= 7) return 'chip-green';
+        if (val >= 4) return 'chip-yellow';
+        return 'chip-red';
+    }
+
     function deleteEntry(id) {
         if (!confirm('Supprimer cette réponse ?')) return;
         let data = JSON.parse(localStorage.getItem('wellnessData') || '[]');
@@ -750,94 +1075,79 @@
 
     function renderTable(data) {
         const tbody = document.getElementById('dataTableBody');
-        if (data.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;color:#4a7ab5;padding:30px;">Aucune donnée</td></tr>';
+        if (!data.length) {
+            tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;color:#9aa0a6;padding:30px;">Aucune donnée</td></tr>';
             return;
         }
-        tbody.innerHTML = [...data].reverse().slice(0, 50).map(d => `
+        tbody.innerHTML = [...data].reverse().slice(0,50).map(d => `
             <tr>
                 <td>${d.date}</td>
                 <td><strong>${d.player}</strong></td>
-                <td><span class="badge ${badgeColor(d.fatigue)}">${d.fatigue}</span></td>
-                <td><span class="badge ${badgeColor(d.sleep)}">${d.sleep}</span></td>
-                <td><span class="badge ${badgeColor(d.mood)}">${d.mood}</span></td>
-                <td><span class="badge ${badgeColor(d.stress)}">${d.stress}</span></td>
-                <td><span class="badge ${badgeColor(d.sorenessUp)}">${d.sorenessUp}</span></td>
-                <td><span class="badge ${badgeColor(d.sorenessDown)}">${d.sorenessDown}</span></td>
-                <td><span class="badge ${badgeColor(d.motivation)}">${d.motivation}</span></td>
-                <td style="color:${d.injury==='non'?'#4caf50':d.injury==='leger'?'#ffc107':'#f44336'}">${d.injury}</td>
-                <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.comment||'-'}</td>
-                <td><button class="btn-delete" onclick="deleteEntry(${d.id})">🗑 Supprimer</button></td>
+                <td><span class="chip ${chipColor(d.fatigue)}">${d.fatigue}</span></td>
+                <td><span class="chip ${chipColor(d.sleep)}">${d.sleep}</span></td>
+                <td><span class="chip ${chipColor(d.mood)}">${d.mood}</span></td>
+                <td><span class="chip ${chipColor(d.stress)}">${d.stress}</span></td>
+                <td><span class="chip ${chipColor(d.sorenessUp)}">${d.sorenessUp}</span></td>
+                <td><span class="chip ${chipColor(d.sorenessDown)}">${d.sorenessDown}</span></td>
+                <td><span class="chip ${chipColor(d.motivation)}">${d.motivation}</span></td>
+                <td style="font-size:0.82em;color:${d.injury==='non'?'#137333':d.injury==='leger'?'#a16207':'#c5221f'}">${d.injury}</td>
+                <td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#5f6368">${d.comment||'—'}</td>
+                <td><button class="btn-delete" onclick="deleteEntry(${d.id})">🗑</button></td>
             </tr>
         `).join('');
     }
 
     function renderCharts(data) {
-        // Group by date
         const byDate = {};
         data.forEach(d => {
             if (!byDate[d.date]) byDate[d.date] = [];
             byDate[d.date].push(d);
         });
         const dates = Object.keys(byDate).sort((a,b) => {
-            const [da,ma,ya] = a.split('/'); const [db,mb,yb] = b.split('/');
-            return new Date(ya,ma-1,da) - new Date(yb,mb-1,db);
+            const p = s => { const [d,m,y]=s.split('/'); return new Date(y,m-1,d); };
+            return p(a)-p(b);
         });
 
-        const avg = (arr, key) => arr.length ? (arr.reduce((s,d) => s+d[key], 0)/arr.length).toFixed(1) : null;
+        const a = (arr,k) => arr.length ? (arr.reduce((s,d)=>s+d[k],0)/arr.length).toFixed(1) : null;
 
-        const fatigue = dates.map(d => avg(byDate[d], 'fatigue'));
-        const sleep = dates.map(d => avg(byDate[d], 'sleep'));
-        const mood = dates.map(d => avg(byDate[d], 'mood'));
-        const stress = dates.map(d => avg(byDate[d], 'stress'));
-        const sUp = dates.map(d => avg(byDate[d], 'sorenessUp'));
-        const sDown = dates.map(d => avg(byDate[d], 'sorenessDown'));
-
-        const chartOpts = {
+        const opts = {
             responsive: true,
-            plugins: { legend: { labels: { color: '#a8c8f0', font: { size: 11 } } } },
+            plugins: { legend: { labels: { color: '#5f6368', font: { size: 11 } } } },
             scales: {
-                x: { ticks: { color: '#7eb8f7', font: { size: 10 } }, grid: { color: '#1e3a6e' } },
-                y: { min: 0, max: 10, ticks: { color: '#7eb8f7' }, grid: { color: '#1e3a6e' } }
+                x: { ticks: { color: '#9aa0a6', font:{size:10} }, grid: { color: '#f1f3f4' } },
+                y: { min:0, max:10, ticks: { color: '#9aa0a6' }, grid: { color: '#f1f3f4' } }
             }
         };
 
-        function makeChart(id, datasets) {
+        function mk(id, datasets, type='line') {
             if (charts[id]) charts[id].destroy();
             charts[id] = new Chart(document.getElementById(id), {
-                type: 'line',
+                type,
                 data: { labels: dates, datasets },
-                options: chartOpts
+                options: { ...opts, plugins: { ...opts.plugins, legend: { labels: { color:'#5f6368', font:{size:11} } } } }
             });
         }
 
-        makeChart('chartFatigue', [
-            { label: 'Fatigue', data: fatigue, borderColor: '#1e90ff', backgroundColor: 'rgba(30,144,255,0.1)', tension: 0.4, fill: true },
-            { label: 'Sommeil', data: sleep, borderColor: '#00bcd4', backgroundColor: 'rgba(0,188,212,0.1)', tension: 0.4, fill: true }
+        mk('chartFatigue', [
+            { label:'Fatigue', data: dates.map(d=>a(byDate[d],'fatigue')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true },
+            { label:'Sommeil', data: dates.map(d=>a(byDate[d],'sleep')), borderColor:'#34a853', backgroundColor:'rgba(52,168,83,0.08)', tension:0.4, fill:true }
+        ]);
+        mk('chartMood', [
+            { label:'Humeur', data: dates.map(d=>a(byDate[d],'mood')), borderColor:'#fbbc04', backgroundColor:'rgba(251,188,4,0.08)', tension:0.4, fill:true },
+            { label:'Stress', data: dates.map(d=>a(byDate[d],'stress')), borderColor:'#ea4335', backgroundColor:'rgba(234,67,53,0.08)', tension:0.4, fill:true }
+        ]);
+        mk('chartSoreness', [
+            { label:'Haut', data: dates.map(d=>a(byDate[d],'sorenessUp')), borderColor:'#1a73e8', backgroundColor:'rgba(26,115,232,0.08)', tension:0.4, fill:true },
+            { label:'Bas', data: dates.map(d=>a(byDate[d],'sorenessDown')), borderColor:'#9334ea', backgroundColor:'rgba(147,52,234,0.08)', tension:0.4, fill:true }
         ]);
 
-        makeChart('chartMood', [
-            { label: 'Humeur', data: mood, borderColor: '#7eb8f7', backgroundColor: 'rgba(126,184,247,0.1)', tension: 0.4, fill: true },
-            { label: 'Stress', data: stress, borderColor: '#3a7bd5', backgroundColor: 'rgba(58,123,213,0.1)', tension: 0.4, fill: true }
-        ]);
-
-        makeChart('chartSoreness', [
-            { label: 'Haut du corps', data: sUp, borderColor: '#1e90ff', backgroundColor: 'rgba(30,144,255,0.1)', tension: 0.4, fill: true },
-            { label: 'Bas du corps', data: sDown, borderColor: '#0d47a1', backgroundColor: 'rgba(13,71,161,0.1)', tension: 0.4, fill: true }
-        ]);
-
-        // Par joueuse
         const byPlayer = {};
-        data.forEach(d => {
-            if (!byPlayer[d.player]) byPlayer[d.player] = [];
-            byPlayer[d.player].push(d);
-        });
+        data.forEach(d => { if(!byPlayer[d.player]) byPlayer[d.player]=[]; byPlayer[d.player].push(d); });
         const players = Object.keys(byPlayer);
         const scores = players.map(p => {
-            const entries = byPlayer[p];
+            const e = byPlayer[p];
             const keys = ['fatigue','sleep','mood','stress','sorenessUp','sorenessDown','motivation'];
-            const total = entries.reduce((s,d) => s + keys.reduce((ss,k) => ss+d[k], 0), 0);
-            return (total / (entries.length * keys.length)).toFixed(1);
+            return (e.reduce((s,d)=>s+keys.reduce((ss,k)=>ss+d[k],0),0)/(e.length*keys.length)).toFixed(1);
         });
 
         if (charts['chartPlayers']) charts['chartPlayers'].destroy();
@@ -845,18 +1155,9 @@
             type: 'bar',
             data: {
                 labels: players,
-                datasets: [{
-                    label: 'Score moyen',
-                    data: scores,
-                    backgroundColor: scores.map(s => s >= 7 ? 'rgba(30,144,255,0.7)' : s >= 4 ? 'rgba(0,188,212,0.7)' : 'rgba(13,71,161,0.7)'),
-                    borderColor: '#1e90ff',
-                    borderWidth: 1
-                }]
+                datasets: [{ label:'Score', data: scores, backgroundColor:'rgba(26,115,232,0.7)', borderColor:'#1a73e8', borderWidth:1, borderRadius:4 }]
             },
-            options: {
-                ...chartOpts,
-                plugins: { legend: { display: false } }
-            }
+            options: { ...opts, plugins: { legend: { display:false } } }
         });
     }
 </script>
